@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+/* ============================= */
+
+/* Deep Space Violet Color Classes */
+
+/* ============================= */
+
+/* Background Colors */
+
+.bg-primary { background-color: #0d0a1bfa; }      /* Main page background (near-black violet) */
+
+.bg-secondary { background-color: #1a1532; }    /* Sections / cards (deep purple) */
+
+.bg-navbar { background-color: #070514; }       /* Navbar slightly darker */
+
+.bg-footer { background-color: #1a1532; }       /* Footer */
+
+/* Accent Colors */
+
+.bg-accent-primary { background-color: #0e555f; }   /* Main buttons, highlights (Cyan) */
+
+.bg-accent-secondary { background-color: #9c27b0; } /* Secondary buttons, badges (Vivid Violet) */
+
+/* Text Colors */
+
+.text-primary { color: #e8eaf6; }      /* Main text (Lightest blue/white) */
+
+.text-secondary { color: #a59fb9; }    /* Secondary text (Pale lavender) */
+
+.text-muted { color: #70688a; }        /* Muted / placeholder text */
+
+/* Border Colors */
+
+.border-color { border-color: #302a52; }  /* Neutral border for cards / sections */
+
+/* Hover variants (optional) */
+
+.hover-bg-accent-primary:hover { background-color: #0f353b; }
+
+.hover-bg-accent-secondary:hover { background-color: #480f58; }
+
+.hover-text-accent-primary:hover { color: #00bcd4; }
+
+.hover-text-accent-secondary:hover { color: #9c27b0; }
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
