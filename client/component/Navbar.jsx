@@ -7,7 +7,9 @@ const Navbar = ({ theme, setTheme }) => {
 
   const [open, setOpen] = useState(false);
   
-
+  const toggleTheme = () => {
+    setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode");
+  };
   return (
     <header className="bg-navbar text-primary sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-5">
@@ -35,15 +37,16 @@ const Navbar = ({ theme, setTheme }) => {
             />
           </div>
 
-          <IoSunnyOutline className="text-2xl cursor-pointer"
-  onClick={() => setTheme(theme == "bg-primary" ? "white" : "bg-primary")}  />
+          <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
+              setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
+            }  />
           <FaCartShopping className="text-2xl cursor-pointer hover:text-blue-600" />
 
-          <button className="bg-accent-primary px-4 py-1 rounded text-primary cursor-pointer hover-bg-accent-primary">
+          <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
             Login
           </button>
 
-          <button className="bg-accent-secondary px-4 py-1 rounded text-primary cursor-pointer hover-bg-accent-secondary">
+          <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
             Sign In
           </button>
 
@@ -78,16 +81,17 @@ const Navbar = ({ theme, setTheme }) => {
           </div>
 
           <div className="flex items-center gap-5 py-2 text-xl">
-            <IoSunnyOutline className="text-2xl cursor-pointer"
-  onClick={() => setTheme(theme == "bg-primary" ? "white" : "bg-primary")} />
+            <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
+              setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
+            } />
             <FaCartShopping />
           </div>
 
-          <button className="bg-accent-primary w-full py-2 rounded text-primary mt-3">
+          <button className="bg-accent-primary w-full py-2 rounded text-button mt-3">
             Login
           </button>
 
-          <button className="bg-accent-secondary w-full py-2 rounded text-primary mt-2">
+          <button className="bg-accent-secondary w-full py-2 rounded text-button mt-2">
             Sign In
           </button>
         </div>
