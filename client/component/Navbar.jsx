@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { IoSunnyOutline, IoMenu, IoClose, IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
@@ -7,7 +7,7 @@ import { FaGraduationCap } from "react-icons/fa";
 const Navbar = ({ theme, setTheme }) => {
 
   const [open, setOpen] = useState(false);
-  
+
   const toggleTheme = () => {
     setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode");
   };
@@ -28,35 +28,36 @@ const Navbar = ({ theme, setTheme }) => {
             <Link to="/course">Courses</Link>
           </span>
 
-          
+
           <div className="relative w-64">
             <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg" />
-            <input 
-              type="text" 
-              placeholder="Search for courses" 
+            <input
+              type="text"
+              placeholder="Search for courses"
               className="bg-secondary pl-10 pr-3 py-2 rounded w-full placeholder:text-muted"
             />
           </div>
 
           <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
-              setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
-            }  />
+            setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
+          } />
           <Link to="/Cart">
             <FaCartShopping className="text-2xl cursor-pointer hover:text-blue-600" />
           </Link>
 
-          <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
-            <Link to="/Login">Login</Link>
-          </button>
-
-          <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
-            <Link to="/Signin">Sign In</Link>
-          </button>
+          <Link to="/Login">
+            <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
+              Login
+            </button></Link>
+          <Link to="/Signin">
+            <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
+              Sign In
+            </button></Link>
 
         </div>
 
         {/* HAMBURGER ICON */}
-        <div 
+        <div
           className="lg:hidden text-3xl cursor-pointer"
           onClick={() => setOpen(!open)}
         >
@@ -70,15 +71,15 @@ const Navbar = ({ theme, setTheme }) => {
         <div className="lg:hidden bg-navbar px-5 pb-5 animate-slideDown">
 
           <span className="block text-lg text-secondary font-medium py-2">
-            Courses
+            <Link to="/course">Courses</Link>
           </span>
 
           {/* MOBILE SEARCH BOX WITH ICON */}
           <div className="relative w-full mb-3">
             <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-xl" />
-            <input 
-              type="text" 
-              placeholder="Search for courses" 
+            <input
+              type="text"
+              placeholder="Search for courses"
               className="bg-secondary pl-11 pr-3 py-2 rounded w-full placeholder:text-muted"
             />
           </div>
@@ -87,16 +88,17 @@ const Navbar = ({ theme, setTheme }) => {
             <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
               setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
             } />
-            <FaCartShopping />
+            <Link to="/Cart"><FaCartShopping /></Link>
           </div>
 
-          <button className="bg-accent-primary w-full py-2 rounded text-button mt-3">
-            Login
-          </button>
-
-          <button className="bg-accent-secondary w-full py-2 rounded text-button mt-2">
-            Sign In
-          </button>
+          <Link to="/Login">
+            <button className="bg-accent-primary w-full py-2 rounded text-button mt-3">
+              Login
+            </button></Link>
+          <Link to="/Signin">
+            <button className="bg-accent-secondary w-full py-2 rounded text-button mt-2">
+              Sign In
+            </button></Link>
         </div>
       )}
     </header>
