@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { IoSunnyOutline, IoMenu, IoClose, IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa";
@@ -17,14 +18,14 @@ const Navbar = ({ theme, setTheme }) => {
         {/* LEFT SECTION OF NAVBAR */}
         <div className="flex items-center gap-3 text-xl font-bold">
           <FaGraduationCap className="text-3xl" />
-          <span className="cursor-pointer">Skill India</span>
+          <span className="cursor-pointer"><Link to="/">Skill India</Link></span>
         </div>
 
         {/* RIGHT SECTION OF NAVBAR */}
         <div className="hidden lg:flex items-center gap-8">
 
           <span className="text-lg text-secondary font-medium cursor-pointer">
-            Courses
+            <Link to="/course">Courses</Link>
           </span>
 
           
@@ -40,14 +41,16 @@ const Navbar = ({ theme, setTheme }) => {
           <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
               setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
             }  />
-          <FaCartShopping className="text-2xl cursor-pointer hover:text-blue-600" />
+          <Link to="/Cart">
+            <FaCartShopping className="text-2xl cursor-pointer hover:text-blue-600" />
+          </Link>
 
           <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
-            Login
+            <Link to="/Login">Login</Link>
           </button>
 
           <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
-            Sign In
+            <Link to="/Signin">Sign In</Link>
           </button>
 
         </div>

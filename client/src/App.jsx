@@ -1,5 +1,11 @@
 import Navbar from "../component/Navbar"
+import Home from "../component/Home"
+import Course from "../component/Course";
+import Cart from "../component/Cart"
+import Login from "../component/Login";
+import Signin from "../component/signin";
 import { useState,useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 
 function App() {
@@ -14,6 +20,13 @@ function App() {
     <>
 
         <Navbar theme={theme} setTheme={setTheme} />
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/course" element={<Course/>}/>
+          <Route path="/Cart" element={<Cart/>}/>
+          <Route path="/Login" element={<Login/>}/>
+          <Route path="/Signin" element={<Signin/>}/>
+        </Routes>
      
       
     </>
