@@ -4,6 +4,7 @@ import Course from "../component/Course";
 import Cart from "../component/Cart"
 import Login from "../component/Login";
 import Signin from "../component/signin";
+import Footer from "../component/Footer";
 import { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -27,7 +28,7 @@ function App() {
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Signin" element={<Signin/>}/>
         </Routes>
-     
+        <Footer/>
       
     </>
   )

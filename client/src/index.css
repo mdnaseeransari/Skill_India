@@ -14,7 +14,7 @@
 
 .dark-mode .bg-navbar { background-color: #070514; }       /* Navbar slightly darker */
 
-.dark-mode .bg-footer { background-color: #1a1532; }       /* Footer */
+.dark-mode .bg-footer { background-color: #070514; }       /* Footer */
 
 /* Accent Colors */
 
@@ -53,7 +53,7 @@
 .light-mode .bg-primary { background-color: #f5f5f5; }     /* Light background */
 .light-mode .bg-secondary { background-color: #ffffff; }   /* White cards */
 .light-mode .bg-navbar { background-color: #e6e6e6; }      /* Light navbar */
-.light-mode .bg-footer { background-color: #f1f1f1; }      /* Light footer */
+.light-mode .bg-footer { background-color: #e6e6e6; }      /* Light footer */
 
 /* Accent Colors (same but bright on light mode) */
 .light-mode .bg-accent-primary { background-color: #00bcd4; }   
