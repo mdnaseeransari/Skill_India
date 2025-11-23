@@ -75,6 +75,79 @@
 .light-mode .hover-text-accent-primary:hover { color: #007c91; }
 .light-mode .hover-text-accent-secondary:hover { color: #7b1fa2; }
 
+
+/* spinner input number up and down arrow */
+/* for hiding */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* ============================= */
+/* DARK MODE SCROLLBAR */
+/* ============================= */
+.dark-mode textarea::-webkit-scrollbar,
+.dark-mode input::-webkit-scrollbar,
+.dark-mode div::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark-mode textarea::-webkit-scrollbar-track,
+.dark-mode input::-webkit-scrollbar-track,
+.dark-mode div::-webkit-scrollbar-track {
+  background: #0b091d;     /* Dark track */
+}
+
+.dark-mode textarea::-webkit-scrollbar-thumb,
+.dark-mode input::-webkit-scrollbar-thumb,
+.dark-mode div::-webkit-scrollbar-thumb {
+  background: #302a52;     /* Purple-ish thumb */
+  border-radius: 6px;
+}
+
+/* Firefox */
+.dark-mode textarea,
+.dark-mode input,
+.dark-mode div {
+  scrollbar-width: thin;
+  scrollbar-color: #302a52 #0b091d;
+}
+
+
+
+/* ============================= */
+/* LIGHT MODE SCROLLBAR */
+/* ============================= */
+.light-mode textarea::-webkit-scrollbar,
+.light-mode input::-webkit-scrollbar,
+.light-mode div::-webkit-scrollbar {
+  width: 8px;
+}
+
+.light-mode textarea::-webkit-scrollbar-track,
+.light-mode input::-webkit-scrollbar-track,
+.light-mode div::-webkit-scrollbar-track {
+  background: #eeeeee;     /* Light track */
+}
+
+.light-mode textarea::-webkit-scrollbar-thumb,
+.light-mode input::-webkit-scrollbar-thumb,
+.light-mode div::-webkit-scrollbar-thumb {
+  background: #aaaaaa;     /* Gray thumb */
+  border-radius: 6px;
+}
+
+/* Firefox */
+.light-mode textarea,
+.light-mode input,
+.light-mode div {
+  scrollbar-width: thin;
+  scrollbar-color: #aaaaaa #eeeeee;
+}
+
+
 @keyframes slideDown {
   from {
     opacity: 0;

@@ -1,10 +1,12 @@
 import Navbar from "../component/Navbar"
 import Home from "../component/Home"
 import Course from "../component/Course";
-import Cart from "../component/Cart"
+import Cart from "../component/cart/Cart"
+import Buy from "../component/cart/Buy"
 import Login from "../component/Login";
 import Signin from "../component/signin";
 import Footer from "../component/Footer";
+import Admin from "../component/admin/Admin"
 import { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -19,17 +21,21 @@ function App() {
 
   return (
     <>
-
+      <div className="min-h-screen flex flex-col">
         <Navbar theme={theme} setTheme={setTheme} />
+        <div className="grow flex flex-col">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/course" element={<Course/>}/>
           <Route path="/Cart" element={<Cart/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Signin" element={<Signin/>}/>
+          <Route path="/Admin" element={<Admin/>}/>
+          <Route path="/Buy" element={<Buy/>}/>
         </Routes>
+        </div>
         <Footer/>
-      
+      </div>
     </>
   )
 }

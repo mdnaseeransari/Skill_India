@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { courses } from "../data/courses";
 import { IoBookOutline, IoPeople } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
@@ -7,44 +8,8 @@ import { FaRegClock } from "react-icons/fa";
 
 
 const Home = () => {
-  const courses = [
-    {
-      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      title: "FrontEnd Development",
-      time: "10 hours",
-      price: "$80"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
-      title: "Full Stack Development",
-      time: "12 hours",
-      price: "$120"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      title: "UI/UX Design",
-      time: "8 hours",
-      price: "$60"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-      title: "React Basics",
-      time: "6 hours",
-      price: "$50"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
-      title: "Node.js Course",
-      time: "9 hours",
-      price: "$70"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
-      title: "JavaScript Mastery",
-      time: "14 hours",
-      price: "$150"
-    }
-  ];
+  const featured = courses.slice(0, 6);
+
 
 
   return (
@@ -124,11 +89,11 @@ const Home = () => {
           </Link>
         </div>
 
-        <Link to="/course">
+        <Link to="/buy">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5 sm:p-10">
-            {courses.map((value, index) => (
+            {featured.map((value, index) => (
               <div
-                key={index}
+                key={value.id}
                 className="rounded-xl bg-primary max-w-[350px] w-full mx-auto"
               >
                 <img
@@ -141,6 +106,15 @@ const Home = () => {
                   <h1 className="text-primary font-bold text-lg sm:text-xl lg:text-2xl hover-text-accent-primary">
                     {value.title}
                   </h1>
+
+                  <p className="pt-2 text-secondary text-sm sm:text-base">
+                    Category: {value.category}
+                  </p>
+
+                  <div className="flex justify-between items-center pt-2 text-secondary text-sm sm:text-base">
+                    <p>Students: {value.students}</p>
+                    <p>Rating: {value.rating} ⭐</p>
+                  </div>
 
                   <div className="flex justify-between items-center pt-4 text-secondary">
                     <div className="flex items-center gap-2 text-sm sm:text-base">
@@ -156,7 +130,9 @@ const Home = () => {
               </div>
             ))}
           </div>
+
         </Link>
+
       </div>
 
 
@@ -165,9 +141,9 @@ const Home = () => {
         <h1 className='font-bold text-4xl'>Ready to Start Learning?</h1>
         <h2 className='text-xl'>Join millions of learners around the world and transform your career today.</h2>
         <Link to="/course">
-            <button className='bg-accent-secondary text-white px-6 py-4 mt-4 hover-bg-accent-secondary text-xl rounded-xl'>
-              Get Started Now
-            </button>
+          <button className='bg-accent-secondary text-white px-6 py-4 mt-4 hover-bg-accent-secondary text-xl rounded-xl'>
+            Get Started Now
+          </button>
         </Link>
       </div>
 
