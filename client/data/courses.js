@@ -31,7 +31,7 @@ export const courses = [
   },
   {
     id: 4,
-    img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    img: "https://thumbs.dreamstime.com/b/top-view-text-react-js-calculator-magnifying-glass-pen-financial-charts-business-calculation-strategy-searching-tax-223307816.jpg",
     title: "React Basics",
     time: "6 hours",
     price: "$50",
@@ -41,7 +41,7 @@ export const courses = [
   },
   {
     id: 5,
-    img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+    img: "https://i0.wp.com/andrewbeeken.co.uk/wp-content/uploads/2018/11/nodejs.jpg?fit=1200%2C675&ssl=1",
     title: "Node.js Course",
     time: "9 hours",
     price: "$70",
@@ -51,12 +51,43 @@ export const courses = [
   },
   {
     id: 6,
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+    img: "https://campus.epam.kz/static/plan/5029/selfstudy03375353.png",
     title: "JavaScript Mastery",
     time: "14 hours",
     price: "$150",
     students: 350,
     rating: 4.9,
     category: "Advanced"
-  }
+  },
+  {
+    id: 7,
+    img: "https://c8.alamy.com/comp/F2HYA9/c-programming-showing-software-design-and-programmer-F2HYA9.jpg",
+    title: "C Language",
+    time: "20 hours",
+    price: "$150",
+    students: 250,
+    rating: 4.5,
+    category: "Beginner"
+  },
+  {
+    id: 8,
+    img: "https://cacm.acm.org/wp-content/uploads/2025/01/012225.BLOG_.21st-Century-C-G.jpg",
+    title: "C++ Programming Language",
+    time: "20 hours",
+    price: "$200",
+    students: 450,
+    rating: 4.9,
+    category: "Advanced"
+  },
+  {
+    id: 9,
+    img: "https://media.istockphoto.com/id/1319504076/vector/java-programming-language-on-technological-background-with-code-elements.jpg?s=612x612&w=0&k=20&c=jEK6Is07AcIjHF-wUcmoj8kE1ZV2QuTN_d-2mvMNmcc=",
+    title: "JAVA Programming Language",
+    time: "25 hours",
+    price: "$200",
+    students: 500,
+    rating: 4.6,
+    category: "Advanced"
+  },
+
 ];

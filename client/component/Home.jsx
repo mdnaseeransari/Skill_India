@@ -94,7 +94,7 @@ const Home = () => {
             {featured.map((value, index) => (
               <div
                 key={value.id}
-                className="rounded-xl bg-primary max-w-[350px] w-full mx-auto"
+                className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
               >
                 <img
                   src={value.img}
