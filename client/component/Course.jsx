@@ -1,5 +1,5 @@
 import React from "react";
-import { courses } from "../data/courses";
+import { courses ,filter1, filter2,filter3 } from "../data/courses";
 import { FaRegClock } from "react-icons/fa";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
@@ -11,31 +11,9 @@ const Course = () => {
   const [selected2, setSelected2] = useState("All Levels");
   const [open3, setOpen3] = useState(false);
   const [selected3, setSelected3] = useState("Most Popular");
-  const categories = [
-    "All",
-    "Development",
-    "Business",
-    "Finance & Accounting",
-    "IT & Software",
-    "Office Productivity",
-    "Personal Development",
-    "Design",
-    "Marketing",
-    "Health & Fitness",
-    "Music",
-  ];
-  const levels=[
-    "All Levels",
-    "Beginner",
-    "Intermediate",
-    "Advanced"
-  ]
-  const Dropdown3=[
-    "Most Popular",
-    "Highest Rated",
-    "Price: Low to High",
-    "Price: High to Low"
-  ]
+  const categories = filter1;
+  const levels=filter2;
+  const Dropdown3 = filter3;
   return (
     <>
 <div className="text-primary bg-primary">

@@ -8,7 +8,7 @@
 
 /* Background Colors */
 
-.dark-mode .bg-primary { background-color: #0d0a1bfa; }      /* Main page background (near-black violet) */
+.dark-mode .bg-primary { background-image: linear-gradient(to right bottom, #1a1532, #16132a, #130f23, #0e0a1c, #070514); }      /* Main page background (near-black violet) */
 
 .dark-mode .bg-secondary { background-color: #1a1532; }    /* Sections / cards (deep purple) */
 
@@ -18,9 +18,11 @@
 
 /* Accent Colors */
 
-.dark-mode .bg-accent-primary { background-color: #0e555f; }   /* Main buttons, highlights (Cyan) */
+.dark-mode .bg-accent-primary { background-color: #4077d1; }   /* Main buttons, highlights (Cyan) */
 
 .dark-mode .bg-accent-secondary { background-color: #9c27b0; } /* Secondary buttons, badges (Vivid Violet) */
+
+.dark-mode .bg-section{background-color: #21498a;}
 
 /* Text Colors */
 
@@ -58,6 +60,7 @@
 /* Accent Colors (same but bright on light mode) */
 .light-mode .bg-accent-primary { background-color: #00bcd4; }   
 .light-mode .bg-accent-secondary { background-color: #9c27b0; }
+.light-mode .bg-section { background-color: #53bdd2; } 
 
 /* Text Colors */
 .light-mode .text-primary { color: #1a1a1a; }   /* Dark black text */

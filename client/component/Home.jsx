@@ -137,7 +137,7 @@ const Home = () => {
 
 
       {/* fifth section */}
-      <div className='flex flex-col justify-center items-center text-primary bg-purple-800 p-20 gap-5'>
+      <div className='flex flex-col justify-center items-center text-primary bg-section  p-20 gap-5'>
         <h1 className='font-bold text-4xl'>Ready to Start Learning?</h1>
         <h2 className='text-xl'>Join millions of learners around the world and transform your career today.</h2>
         <Link to="/course">

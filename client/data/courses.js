@@ -41,7 +41,7 @@ export const courses = [
   },
   {
     id: 5,
-    img: "https://i0.wp.com/andrewbeeken.co.uk/wp-content/uploads/2018/11/nodejs.jpg?fit=1200%2C675&ssl=1",
+    img: "https://wallpapercave.com/wp/wp5070716.jpg",
     title: "Node.js Course",
     time: "9 hours",
     price: "$70",
@@ -91,3 +91,30 @@ export const courses = [
   },
 
 ];
+
+
+export const filter1=[
+    "All",
+    "Development",
+    "Business",
+    "Finance & Accounting",
+    "IT & Software",
+    "Office Productivity",
+    "Personal Development",
+    "Design",
+    "Marketing",
+    "Health & Fitness",
+    "Music",
+  ];
+export const filter2=[
+    "All Levels",
+    "Beginner",
+    "Intermediate",
+    "Advanced"
+  ]
+export const filter3=[
+    "Most Popular",
+    "Highest Rated",
+    "Price: Low to High",
+    "Price: High to Low"
+  ]
