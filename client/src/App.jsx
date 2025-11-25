@@ -6,7 +6,8 @@ import Buy from "../component/cart/Buy"
 import Login from "../component/Login";
 import Signin from "../component/signin";
 import Footer from "../component/Footer";
-import Admin from "../component/admin/Admin"
+import Admin from "../component/admin/Admin";
+import Forgot from "../component/forgot";
 import { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/Signin" element={<Signin/>}/>
           <Route path="/Admin" element={<Admin/>}/>
           <Route path="/Buy" element={<Buy/>}/>
+          <Route path="/Forgot" element={<Forgot/>}/>
         </Routes>
         </div>
         <Footer/>
