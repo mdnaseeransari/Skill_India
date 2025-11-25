@@ -4,8 +4,9 @@ import {Link} from "react-router-dom";
 const Login = () => {
   return (
     <>
-      <div className="bg-primary flex justify-center p-10 text-primary">
-        <div className="w-full max-w-md bg-secondary p-8 rounded-2xl shadow-lg">
+      
+        <div className="bg-primary flex justify-center p-10 grow text-primary">
+        <div className="w-full max-w-md bg-secondary p-8 rounded-2xl flex flex-col gap-6 shadow-lg">
           
           <h1 className="text-3xl font-bold text-center mb-6 text-primary">
             Welcome Back
@@ -38,6 +39,7 @@ const Login = () => {
 
         </div>
       </div>
+      {/* </div> */}
     </>
   )
 }
