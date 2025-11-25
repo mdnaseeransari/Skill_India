@@ -83,7 +83,7 @@ This is a portfolio project, but feel free to fork the repository and explore th
 
 This project is licensed under the MIT License - see the `LICENSE` file for details (If you plan to add one).
 
-## 👤 Contact
+##  Contact
 
 [Your Name] - [Your Email Address]
 
