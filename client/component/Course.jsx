@@ -14,6 +14,12 @@ const Course = () => {
   const categories = filter1;
   const levels=filter2;
   const Dropdown3 = filter3;
+
+  const searchData=featured.filter((curCard)=>{
+    const search1= selected1 === "All" || curCard.title.toLowerCase().includes(selected1.toLocaleLowerCase());
+    const search2=selected2 ==="All Levels" || curCard.category.toLowerCase().includes(selected2.toLowerCase());
+    return search1 && search2;
+  })
   return (
     <>
 <div className="text-primary bg-primary">
@@ -130,8 +136,10 @@ const Course = () => {
 
 
   {/* cards */}
+
+
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5 sm:p-10">
-    {featured.map((value, index) => (
+    {searchData.map((value, index) => (
       <div
         key={value.id}
         className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"

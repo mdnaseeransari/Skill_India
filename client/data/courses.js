@@ -62,7 +62,7 @@ export const courses = [
   {
     id: 7,
     img: "https://c8.alamy.com/comp/F2HYA9/c-programming-showing-software-design-and-programmer-F2HYA9.jpg",
-    title: "C Language",
+    title: "C Programming",
     time: "20 hours",
     price: "$150",
     students: 250,
@@ -96,15 +96,7 @@ export const courses = [
 export const filter1=[
     "All",
     "Development",
-    "Business",
-    "Finance & Accounting",
-    "IT & Software",
-    "Office Productivity",
-    "Personal Development",
-    "Design",
-    "Marketing",
-    "Health & Fitness",
-    "Music",
+    "Programming",
   ];
 export const filter2=[
     "All Levels",
