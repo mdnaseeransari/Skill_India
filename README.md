@@ -5,7 +5,7 @@ Full-stack e-learning platform project using MERN stack with Vite and Tailwind C
 
 A full-stack, comprehensive e-learning platform project inspired by popular course delivery systems like Udemy, designed to showcase modern web development skills. This application allows users to browse courses, manage enrollments, and provides an admin interface for course creation and content delivery.
 
-## ✨ Features
+##  Features
 
 * **User Authentication:** Secure login and registration for learners and instructors.
 * **Course Catalog:** Browse and search a categorized library of courses.
@@ -14,7 +14,7 @@ A full-stack, comprehensive e-learning platform project inspired by popular cour
 * **Admin/Instructor Panel:** Secure interface for creating, updating, and managing course content (CRUD operations).
 * **Responsive Design:** Fully responsive layout using **Tailwind CSS** for seamless access on desktop and mobile devices.
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 This project is built using the **MERN** stack, leveraging fast development and modern styling tools:
 
@@ -31,7 +31,7 @@ This project is built using the **MERN** stack, leveraging fast development and 
 * **MongoDB:** NoSQL database for flexible data storage (courses, users, enrollments).
 * **Mongoose:** ODM (Object Data Modeling) library for MongoDB and Node.js.
 
-## 🚀 Getting Started
+##  Getting Started
 
 Follow these steps to set up the project locally.
 
@@ -75,11 +75,11 @@ Follow these steps to set up the project locally.
     * The backend will run on `http://localhost:5000` (or the port you set).
     * The frontend will run on a port provided by Vite, usually `http://localhost:5173`.
 
-## 🤝 Contribution
+##  Contribution
 
 This is a portfolio project, but feel free to fork the repository and explore the code!
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the `LICENSE` file for details (If you plan to add one).
 
