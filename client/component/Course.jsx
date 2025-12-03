@@ -1,35 +1,49 @@
 import React from "react";
-import { courses ,filter1, filter2,filter3 } from "../data/courses";
+import { courses ,filter1, filter2} from "../data/courses";
 import { FaRegClock } from "react-icons/fa";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
+
 const Course = () => {
   const featured = courses;
+  const [searchInput,setSearchInput]=useState("");
   const [open1, setOpen1] = useState(false);
   const [selected1, setSelected1] = useState("All");
   const [open2, setOpen2] = useState(false);
   const [selected2, setSelected2] = useState("All Levels");
-  const [open3, setOpen3] = useState(false);
-  const [selected3, setSelected3] = useState("Most Popular");
   const categories = filter1;
   const levels=filter2;
-  const Dropdown3 = filter3;
 
   const searchData=featured.filter((curCard)=>{
+    const mathSearch =curCard.title.toLowerCase().includes(searchInput.toLowerCase());
     const search1= selected1 === "All" || curCard.title.toLowerCase().includes(selected1.toLocaleLowerCase());
     const search2=selected2 ==="All Levels" || curCard.category.toLowerCase().includes(selected2.toLowerCase());
-    return search1 && search2;
+    return  mathSearch && search2 && search1;
   })
   return (
     <>
 <div className="text-primary bg-primary">
-  <div className="flex flex-col gap-3  justify-center items-center w-screen sm:flex-row">
+  <div className="flex flex-col justify-center items-center">
+  <div className="flex justify-center items-center m-3">
+      <div className="relative flex justify-center items-center w-103">
+        <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg" />
+        <input
+          type="text"
+          placeholder="Search for courses"
+          value={searchInput}
+          onChange={(e)=>setSearchInput(e.target.value)}
+          className="bg-secondary pl-10 pr-3 py-2 w-full placeholder:text-muted bg-primary border border-color rounded-lg"
+        />
+      </div>
+  </div>
+  <div className="flex gap-3  justify-center items-center w-screen sm:flex-row">
     <div>
 
     {/* Dropdown Button */}
     <button
       onClick={() => setOpen1(!open1)}
-      className="w-[200px] mt-4 px-4 py-2 bg-primary border border-color rounded-lg flex justify-between items-center shadow-sm"
+      className="w-[200px]  px-4 py-2 bg-primary border border-color rounded-lg flex justify-between items-center shadow-sm"
     >
       {selected1}
       <FaChevronDown
@@ -66,7 +80,7 @@ const Course = () => {
     {/* Dropdown Button */}
     <button
       onClick={() => setOpen2(!open2)}
-      className="w-[200px] mt-4 px-4 py-2 bg-primary border border-color rounded-lg flex justify-between items-center shadow-sm"
+      className="w-[200px]  px-4 py-2 bg-primary border border-color rounded-lg flex justify-between items-center shadow-sm"
     >
       {selected2}
       <FaChevronDown
@@ -96,42 +110,7 @@ const Course = () => {
       </div>
     )}
   </div>
-
-
-<div>
-    {/* Dropdown Button */}
-    <button
-      onClick={() => setOpen3(!open3)}
-      className="w-[200px] mt-4 px-4 py-2 bg-primary border border-color rounded-lg flex justify-between items-center shadow-sm"
-    >
-      {selected3}
-      <FaChevronDown
-        className={`transition-transform ${open3 ? "rotate-180" : ""}`}
-      />
-    </button>
-
-    {/* Dropdown Items */}
-    {open3 && (
-      <div className="absolute z-20 mt-2 w-[200px] bg-primary text-primary shadow-lg rounded-xl border max-h-80 overflow-y-auto">
-        {Dropdown3.map((item, index) => (
-          <div
-            key={index}
-            onClick={() => {
-              setSelected3(item);
-              setOpen3(false);
-            }}
-            className={`cursor-pointer px-4 py-3 text-sm hover:bg-orange-500 rounded-lg ${
-              selected3 === item
-                ? "bg-orange-500 text-primary"
-                : "text-primary "
-            }`}
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
+</div>
 </div>
 
 

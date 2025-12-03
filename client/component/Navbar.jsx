@@ -29,14 +29,14 @@ const Navbar = ({ theme, setTheme }) => {
           </span>
 
 
-          <div className="relative w-64">
+          {/* <div className="relative w-64">
             <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg" />
             <input
               type="text"
               placeholder="Search for courses"
               className="bg-secondary pl-10 pr-3 py-2 rounded w-full placeholder:text-muted"
             />
-          </div>
+          </div> */}
 
           <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
             setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")

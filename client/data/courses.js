@@ -104,9 +104,3 @@ export const filter2=[
     "Intermediate",
     "Advanced"
   ]
-export const filter3=[
-    "Most Popular",
-    "Highest Rated",
-    "Price: Low to High",
-    "Price: High to Low"
-  ]
