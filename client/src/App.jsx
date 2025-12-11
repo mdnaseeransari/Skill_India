@@ -10,6 +10,7 @@ import Admin from "../component/admin/Admin";
 import Forgot from "../component/forgot";
 import { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import CourseDetails from "../component/CourseDetails";
 
 
 function App() {
@@ -22,12 +23,13 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-secondary">
         <Navbar theme={theme} setTheme={setTheme} />
         <div className="grow flex flex-col">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/course" element={<Course/>}/>
+          <Route path="/course/:courseId" element={<CourseDetails/>}/>
           <Route path="/Cart" element={<Cart/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Signin" element={<Signin/>}/>
