@@ -7,11 +7,12 @@ import Login from "../component/Login";
 import Signin from "../component/Signin";
 import Footer from "../component/Footer";
 import Admin from "../component/admin/Admin";
-import Forgot from "../component/forgot";
+import Forgot from "../component/Forgot";
 import { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../component/Profile";
 import CourseDetails from "../component/CourseDetails";
+import Learning from "../component/learning/Learning";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Admin" element={<Admin/>}/>
           <Route path="/Buy" element={<Buy/>}/>
           <Route path="/Forgot" element={<Forgot/>}/>
+          <Route path="/Learning" element={<Learning/>}/>
         </Routes>
         </div>
         <Footer/>
