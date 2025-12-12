@@ -10,6 +10,7 @@ import Admin from "../component/admin/Admin";
 import Forgot from "../component/forgot";
 import { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import Profile from "../component/Profile";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Navbar theme={theme} setTheme={setTheme} />
         <div className="grow flex flex-col">
         <Routes>
+          <Route path="/profile" element={<Profile />}/>
           <Route path="/" element={<Home/>}/>
           <Route path="/course" element={<Course/>}/>
           <Route path="/Cart" element={<Cart/>}/>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
 
-  // This code is For selecting Country 
+  const navigate = useNavigate();
+
+  // Country list
   const countryCodes = [
     { name: "India", code: "+91" },
     { name: "United States", code: "+1" },
@@ -22,14 +24,34 @@ const Signin = () => {
     { name: "Afghanistan", code: "+93"},
     { name: "Nepal", code: "+977"},
     { name: "Brazil", code: "+55"}
-
   ];
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [selectedCode, setSelectedCode] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+
+  const handleSignup = () => {
+    if (!fullName || !email || !password) {
+      alert("Please fill required fields");
+      return;
+    }
+
+    // Save ONLY name & email for Profile page
+    localStorage.setItem("user", JSON.stringify({
+      name: fullName,
+      email: email
+    }));
+
+    navigate("/");
+    window.location.reload();
+  };
 
   return (
     <>
-      <div className="bg-primary flex justify-center  text-primary">
+      <div className="bg-primary flex justify-center text-primary">
 
         <div className="w-full max-w-md bg-secondary p-8 m-8 rounded-2xl shadow-lg">
 
@@ -41,6 +63,8 @@ const Signin = () => {
           <input
             type="text"
             placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
           />
 
@@ -48,38 +72,33 @@ const Signin = () => {
           <input
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
           />
 
-          {/* Phone Number with Country Dropdown */}
+          {/* Phone + Country */}
           <div className="flex gap-3 mb-3">
-            
-            {/* Dropdown Code for country*/}
+
             <select
-            className="p-3 border border-color bg-secondary text-primary rounded-lg"
-            value={selectedCode}
-             onChange={(e) => setSelectedCode(e.target.value)}
->
-             <option value="">Select Country</option>   {/* ⬅ added this */}
-  
-             {countryCodes.map((c) => (
-             <option key={c.code} value={c.code}>
-            {c.name} ({c.code})
-           </option>
-          ))}
-</select>
+              className="p-3 border border-color bg-secondary text-primary rounded-lg"
+              value={selectedCode}
+              onChange={(e) => setSelectedCode(e.target.value)}
+            >
+              <option value="">Select Country</option>
+              {countryCodes.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.name} ({c.code})
+                </option>
+              ))}
+            </select>
 
-
-            {/* Phone Input */}
             <input
               type="tel"
               placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="w-full p-3 bg-secondary border border-color rounded-lg text-primary placeholder:text-muted"
-              value={`${selectedCode} ${phone}`}
-              onChange={(e) => {
-                const numberOnly = e.target.value.replace(selectedCode, "").trim();
-                setPhone(numberOnly);
-              }}
             />
           </div>
 
@@ -87,6 +106,8 @@ const Signin = () => {
           <textarea
             placeholder="Address"
             rows="3"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
             className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
           ></textarea>
 
@@ -94,11 +115,16 @@ const Signin = () => {
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
           />
 
-          {/* Button */}
-          <button className="bg-accent-secondary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition">
+          {/* Signup Button */}
+          <button
+            onClick={handleSignup}
+            className="bg-accent-secondary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition"
+          >
             Sign Up
           </button>
 
@@ -115,6 +141,6 @@ const Signin = () => {
       </div>
     </>
   );
-}
+};
 
 export default Signin;

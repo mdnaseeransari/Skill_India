@@ -1,51 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { IoSunnyOutline, IoMenu, IoClose, IoSearch } from "react-icons/io5";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { IoSunnyOutline, IoMenu, IoClose } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa";
 
 const Navbar = ({ theme, setTheme }) => {
-
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-  // const toggleTheme = () => {
-  //   setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode");
-  // };
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   return (
     <header className="bg-navbar text-primary sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-5">
 
-        {/* LEFT SECTION OF NAVBAR */}
+        {/* LEFT LOGO */}
         <div className="flex items-center gap-3 text-xl font-bold">
-          <FaGraduationCap className="text-3xl" />
-          <span className="cursor-pointer"><Link to="/">Skill India</Link></span>
+          <Link to="/"><FaGraduationCap className="text-3xl" /></Link>
+          <span>
+            
+            <Link to="/">Skill India</Link>
+          </span>
         </div>
 
-        {/* RIGHT SECTION OF NAVBAR */}
+        {/* RIGHT SECTION (DESKTOP) */}
         <div className="hidden lg:flex items-center gap-8">
 
           <span className="text-lg text-secondary font-medium cursor-pointer">
             <Link to="/course">Courses</Link>
           </span>
 
+          <IoSunnyOutline
+            className="text-2xl cursor-pointer"
+            onClick={() =>
+              setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
+            }
+          />
 
-          {/* <div className="relative w-64">
-            <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg" />
-            <input
-              type="text"
-              placeholder="Search for courses"
-              className="bg-secondary pl-10 pr-3 py-2 rounded w-full placeholder:text-muted"
-            />
-          </div> */}
-
-          <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
-            setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
-          } />
-          <Link to="/Cart">
+          <Link to="/cart">
             <FaCartShopping className="text-2xl cursor-pointer hover:text-blue-600" />
           </Link>
 
-          <Link to="/Login">
+          {!user && (
+            <>
+              <Link to="/Login">
             <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
               Login
             </button></Link>
@@ -53,20 +57,32 @@ const Navbar = ({ theme, setTheme }) => {
             <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
               Sign In
             </button></Link>
+            </>
+          )}
 
+          {user && (
+            <Link to="/profile">
+              <button className="cursor-pointer">
+                <img
+                  src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
+                  alt="profile"
+                  className="w-7 h-7 rounded-full"
+                />
+              </button>
+            </Link>
+          )}
         </div>
 
-        {/* HAMBURGER ICON */}
+        {/* mobile */}
         <div
           className="lg:hidden text-3xl cursor-pointer"
           onClick={() => setOpen(!open)}
         >
           {open ? <IoClose /> : <IoMenu />}
         </div>
-
       </div>
 
-      {/* MOBILE / TABLET MENU */}
+      {/* mobile menu  */}
       {open && (
         <div className="lg:hidden bg-navbar px-5 pb-5 animate-slideDown">
 
@@ -74,31 +90,34 @@ const Navbar = ({ theme, setTheme }) => {
             <Link to="/course">Courses</Link>
           </span>
 
-          {/* MOBILE SEARCH BOX WITH ICON */}
-          <div className="relative w-full mb-3">
-            <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-xl" />
-            <input
-              type="text"
-              placeholder="Search for courses"
-              className="bg-secondary pl-11 pr-3 py-2 rounded w-full placeholder:text-muted"
-            />
-          </div>
+          {!user && (
+            <>
+              <Link to="/login">
+                <button className="bg-accent-primary w-full py-2 rounded text-button mt-3">
+                  Login
+                </button>
+              </Link>
 
-          <div className="flex items-center gap-5 py-2 text-xl">
-            <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
-              setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
-            } />
-            <Link to="/Cart"><FaCartShopping /></Link>
-          </div>
+              <Link to="/signin">
+                <button className="bg-accent-secondary w-full py-2 rounded text-button mt-2">
+                  Sign In
+                </button>
+              </Link>
+            </>
+          )}
 
-          <Link to="/Login">
-            <button className="bg-accent-primary w-full py-2 rounded text-button mt-3">
-              Login
-            </button></Link>
-          <Link to="/Signin">
-            <button className="bg-accent-secondary w-full py-2 rounded text-button mt-2">
-              Sign In
-            </button></Link>
+          {user && (
+            <Link to="/profile">
+              <button className="bg-accent-secondary w-full py-2 rounded text-button mt-3 flex items-center justify-center">
+                <img
+                  src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
+                  alt="profile"
+                  className="w-7 h-7 rounded-full"
+                />
+              </button>
+            </Link>
+          )}
+
         </div>
       )}
     </header>

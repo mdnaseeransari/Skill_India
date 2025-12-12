@@ -28,7 +28,7 @@ const Home = () => {
             Professional Certificates, and degrees from world-class universities and companies.
           </h2>
 
-          <Link to="/course"><button className="bg-accent-primary text-button px-6 py-3 mt-10 rounded-xl">
+          <Link to="/course"><button className="bg-accent-primary text-button px-6 py-3 mt-10 rounded-xl cursor-pointer hover-bg-accent-primary text-lg md:text-xl">
             Explore Courses
           </button></Link>
 
