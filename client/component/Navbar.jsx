@@ -55,7 +55,7 @@ const Navbar = ({ theme, setTheme }) => {
             </button></Link>
           <Link to="/Signin">
             <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
-              Sign In
+              Sign Up
             </button></Link>
             </>
           )}

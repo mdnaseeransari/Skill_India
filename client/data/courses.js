@@ -7,7 +7,8 @@ export const courses = [
     price: "$80",
     students: 100,
     rating: 4.5,
-    category: "Intermediate"
+    category: "Intermediate",
+    description:"This course provides a solid foundation in front-end web development, focusing on HTML, CSS, and JavaScript to build responsive and interactive user interfaces. Students also learn modern tools and frameworks like React, Tailwind CSS, and version control with Git. By the end, learners can design and develop visually appealing, user-friendly websites and web applications."
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ export const courses = [
     price: "$120",
     students: 300,
     rating: 5,
-    category: "Advanced"
+    category: "Advanced",
+    description:"This course provides a complete overview of frontend and backend development, covering HTML, CSS, JavaScript, React, Node.js, databases, APIs, and deployment. Students learn to build fully functional web applications from start to finish."
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ export const courses = [
     price: "$60",
     students: 150,
     rating: 4.2,
-    category: "Beginner"
+    category: "Beginner",
+    description:"This course covers the fundamentals of UI/UX design, including user research, wireframing, prototyping, visual design principles, and usability testing. Students learn to create intuitive and engaging digital experiences focused on user needs."
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ export const courses = [
     price: "$50",
     students: 200,
     rating: 4.7,
-    category: "Beginner"
+    category: "Beginner",
+    description:"This course introduces the fundamentals of React, including components, props, state management, JSX, and basic hooks. Students learn to build interactive user interfaces and understand the core concepts behind modern frontend development."
   },
   {
     id: 5,
@@ -47,7 +51,8 @@ export const courses = [
     price: "$70",
     students: 120,
     rating: 4.3,
-    category: "Intermediate"
+    category: "Intermediate",
+    description:"This course introduces server-side development with Node.js, covering modules, file system operations, asynchronous programming, Express.js, APIs, and database integration. Students learn to build fast, scalable backend applications using JavaScript."
   },
   {
     id: 6,
@@ -57,7 +62,8 @@ export const courses = [
     price: "$150",
     students: 350,
     rating: 4.9,
-    category: "Advanced"
+    category: "Advanced",
+    description:"This course provides in-depth learning of JavaScript, covering core concepts, modern ES6+ features, DOM manipulation, asynchronous programming, and real-world application development. Students gain hands-on experience to build dynamic, interactive, and responsive web applications with mastery-level skills."
   },
   {
     id: 7,
@@ -67,7 +73,8 @@ export const courses = [
     price: "$150",
     students: 250,
     rating: 4.5,
-    category: "Beginner"
+    category: "Beginner",
+    description:"This course covers the fundamentals of C programming, including variables, data types, control structures, functions, arrays, pointers, and file handling. Students learn to write efficient and structured C programs while developing strong problem-solving skills."
   },
   {
     id: 8,
@@ -77,7 +84,8 @@ export const courses = [
     price: "$200",
     students: 450,
     rating: 4.9,
-    category: "Advanced"
+    category: "Advanced",
+    description:"This course introduces the basics of C++ programming, including syntax, functions, object-oriented concepts, and memory management. Students learn to write, compile, and debug efficient C++ programs using real-world problem-solving techniques."
   },
   {
     id: 9,
@@ -87,7 +95,8 @@ export const courses = [
     price: "$200",
     students: 500,
     rating: 4.6,
-    category: "Advanced"
+    category: "Advanced",
+    description:"This course introduces the fundamentals of Java programming and object-oriented concepts. Students learn to write Java programs, work with classes and objects, handle exceptions, use collections, and build basic applications. The course prepares learners to develop efficient, real-world Java solutions."
   },
 
 ];

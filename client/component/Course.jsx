@@ -4,6 +4,7 @@ import { FaRegClock } from "react-icons/fa";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Course = () => {
   const featured = courses;
@@ -14,6 +15,7 @@ const Course = () => {
   const [selected2, setSelected2] = useState("All Levels");
   const categories = filter1;
   const levels=filter2;
+  const navigate=useNavigate();
 
   const searchData=featured.filter((curCard)=>{
     const mathSearch =curCard.title.toLowerCase().includes(searchInput.toLowerCase());
@@ -118,10 +120,11 @@ const Course = () => {
 
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5 sm:p-10">
-    {searchData.map((value, index) => (
+    {searchData.map((value) => (
       <div
         key={value.id}
         className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
+        onClick={()=>navigate(`/course/${value.id}`)}
       >
         <img
           src={value.img}
