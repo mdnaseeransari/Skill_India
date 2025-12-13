@@ -1,6 +1,4 @@
-import React from 'react'
-import { Link } from "react-router-dom";
-import { courses } from "../data/courses";
+import { Link,useLoaderData, useNavigate } from "react-router-dom";
 import { IoBookOutline, IoPeople } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
@@ -8,8 +6,8 @@ import { FaRegClock } from "react-icons/fa";
 
 
 const Home = () => {
-  const featured = courses.slice(0, 6);
-
+  const featured =(useLoaderData()).slice(0, 6);
+const Navigate=useNavigate();
 
 
   return (
@@ -89,12 +87,13 @@ const Home = () => {
           </Link>
         </div>
 
-        <Link to="/buy">
+ 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5 sm:p-10">
-            {featured.map((value, index) => (
+            {featured.map((value) => (
               <div
-                key={value.id}
+                key={value._id}
                 className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
+                onClick={()=>Navigate(`/${value._id}`)}
               >
                 <img
                   src={value.img}
@@ -130,8 +129,6 @@ const Home = () => {
               </div>
             ))}
           </div>
-
-        </Link>
 
       </div>
 

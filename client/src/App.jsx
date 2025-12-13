@@ -1,29 +1,74 @@
-import Navbar from "../component/Navbar"
 import Home from "../component/Home"
 import Course from "../component/Course";
 import Cart from "../component/cart/Cart"
 import Buy from "../component/cart/Buy"
 import Login from "../component/Login";
-import Signin from "../component/signin";
-import Footer from "../component/Footer";
+import SignUp from "../component/signUp";
 import Admin from "../component/admin/Admin";
 import Forgot from "../component/forgot";
-import { useState,useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import {createBrowserRouter, RouterProvider } from "react-router-dom";
 import CourseDetails from "../component/CourseDetails";
+import PageLayout from "../component/PageLayout";
+import { courseLoader } from "../api/GetAPIData";
+import { courseDetailsLoader } from "../api/getSingleData";
 
 
 function App() {
-  const [theme, setTheme] = useState("dark-mode")
-
-   useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
-  
+  const router=createBrowserRouter([
+    {
+      path:"/",
+      element:<PageLayout/>,
+      children:[
+        {
+          path:"/",
+          element:<Home/>,
+          loader:courseLoader
+        },
+        // {
+        //   path:"/:courseId",
+        //   element:<CourseDetails/>
+        // },
+        {
+          path:"/course",
+          element:<Course/>,
+          loader:courseLoader
+        },
+        {
+          path:"/course/:courseId",
+          element:<CourseDetails/>,
+          loader:courseDetailsLoader
+        },
+        {
+          path:"/Cart",
+          element:<Cart/>
+        },
+        {
+          path:"/Login",
+          element:<Login/>
+        },
+        {
+          path:"/SignUp",
+          element:<SignUp/>
+        },
+        {
+          path:"/Admin",
+          element:<Admin/>
+        },
+        {
+          path:"/Buy",
+          element:<Buy/>
+        },
+        {
+          path:"/Forgot",
+          element:<Forgot/>
+        },
+      ]
+    }
+  ])
 
   return (
     <>
-      <div className="min-h-screen flex flex-col bg-secondary">
+      {/* <div className="min-h-screen flex flex-col bg-secondary">
         <Navbar theme={theme} setTheme={setTheme} />
         <div className="grow flex flex-col">
         <Routes>
@@ -39,7 +84,8 @@ function App() {
         </Routes>
         </div>
         <Footer/>
-      </div>
+      </div> */}
+       <RouterProvider router={router}/>
     </>
   )
 }

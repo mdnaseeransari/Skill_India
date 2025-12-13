@@ -49,7 +49,7 @@ const Navbar = ({ theme, setTheme }) => {
             <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
               Login
             </button></Link>
-          <Link to="/Signin">
+          <Link to="/SignUp">
             <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
               Sign Up
             </button></Link>
