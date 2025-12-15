@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
-
-  // This code is For selecting Country 
+  const navigate=useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const countryCodes = [
     { name: "India", code: "+91" },
     { name: "United States", code: "+1" },
@@ -36,10 +38,19 @@ const SignUp = () => {
 function handleInput(e){
   setUserData((prev)=>({...prev,[e.target.name]:e.target.value}))
 }
-function handleFormSubmit(e){
+async function handleFormSubmit(e){
   e.preventDefault();
   console.log(userData);
-}
+    try {
+      const res = await axios.post("http://localhost:3000/user/signup",userData);
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error.response?.data?.error || "Signup failed");
+      alert(error.response?.data?.error || "Signup failed");
+    }
+  }
   return (
     <>
       <div className="bg-primary flex justify-center  text-primary">
@@ -110,14 +121,19 @@ function handleFormSubmit(e){
           ></textarea>
 
           {/* Password */}
+          <div className='relative flex items-center mb-3'>
           <input
-            value={userData.password}
             name="password"
+            value={userData.password}
             onChange={handleInput}
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
+            className="w-full p-3 bg-secondary border border-color rounded-lg  text-primary placeholder:text-muted"
           />
+          <span onClick={() => setShowPassword(!showPassword)} className="absolute right-4 flex items-center cursor-pointer text-muted hover:text-primary">
+          {showPassword ? <FaEyeSlash /> : <FaEye />}</span>
+          </div>
+
 
           {/* Button */}
           <button className="bg-accent-secondary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoSunnyOutline, IoMenu, IoClose, IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa";
@@ -16,10 +16,12 @@ const Navbar = ({ theme, setTheme }) => {
       <div className="container mx-auto flex items-center justify-between p-5">
 
         {/* LEFT SECTION OF NAVBAR */}
+          <NavLink to="/">
         <div className="flex items-center gap-3 text-xl font-bold">
           <FaGraduationCap className="text-3xl" />
-          <span className="cursor-pointer"><Link to="/">Skill India</Link></span>
+          <span className="cursor-pointer">Skill India</span>
         </div>
+          </NavLink>
 
         {/* RIGHT SECTION OF NAVBAR */}
         <div className="hidden lg:flex items-center gap-8">

@@ -9,3 +9,4 @@ export async function courseDetailsLoader({ params }) {
       } catch (error) {
         console.log(error);
     }}
+     

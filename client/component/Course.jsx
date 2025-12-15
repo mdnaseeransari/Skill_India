@@ -8,6 +8,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Course = () => {
   const featured = useLoaderData();
+  console.log(featured);
   const [searchInput,setSearchInput]=useState("");
   const [open1, setOpen1] = useState(false);
   const [selected1, setSelected1] = useState("All");

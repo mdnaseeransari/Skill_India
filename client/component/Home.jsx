@@ -26,7 +26,7 @@ const Navigate=useNavigate();
             Professional Certificates, and degrees from world-class universities and companies.
           </h2>
 
-          <Link to="/course"><button className="bg-accent-primary text-button px-6 py-3 mt-10 rounded-xl">
+          <Link to="course"><button className="bg-accent-primary text-button px-6 py-3 mt-10 rounded-xl">
             Explore Courses
           </button></Link>
 
@@ -66,7 +66,7 @@ const Navigate=useNavigate();
         <h1 className="text-primary font-bold text-3xl mx-4 md:mx-22">Popular Categories</h1>
         <div className='flex flex-wrap justify-between mt-10 gap-4 mx-4 md:mx-22 '>
           {["FrontEnd", "Data Structure & Algorithm", "BackEnd", "FullStack"].map((value, index) => (
-            <Link key={index} to='/course'>
+            <Link key={index} to='course'>
               <div
                 key={index}
                 className='border border-color w-60 h-25 flex items-center justify-center rounded-2xl cursor-pointer text-xl text-center hover-text-accent-primary'
@@ -82,7 +82,7 @@ const Navigate=useNavigate();
       <div className='bg-secondary border border-color p-10 text-primary'>
         <div className='flex justify-between items-center'>
           <h1 className="text-primary font-bold text-3xl mx-4 md:mx-22">Featured Courses</h1>
-          <Link to="/course">
+          <Link to="course">
             <p className='mr-4 md:mr-30 text-secondary hover-text-accent-primary font-bold'>View all</p>
           </Link>
         </div>
@@ -93,7 +93,7 @@ const Navigate=useNavigate();
               <div
                 key={value._id}
                 className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
-                onClick={()=>Navigate(`/${value._id}`)}
+                onClick={()=>Navigate(`${value._id}`)}
               >
                 <img
                   src={value.img}
@@ -137,7 +137,7 @@ const Navigate=useNavigate();
       <div className='flex flex-col justify-center items-center text-primary bg-section  p-20 gap-5'>
         <h1 className='font-bold text-4xl'>Ready to Start Learning?</h1>
         <h2 className='text-xl'>Join millions of learners around the world and transform your career today.</h2>
-        <Link to="/course">
+        <Link to="course">
           <button className='bg-accent-secondary text-white px-6 py-4 mt-4 hover-bg-accent-secondary text-xl rounded-xl'>
             Get Started Now
           </button>
