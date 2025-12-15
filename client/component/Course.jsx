@@ -1,13 +1,14 @@
 import React from "react";
-import { courses ,filter1, filter2} from "../data/courses";
+import {filter1, filter2} from "../data/courses";
 import { FaRegClock } from "react-icons/fa";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Course = () => {
-  const featured = courses;
+  const featured = useLoaderData();
+  console.log(featured);
   const [searchInput,setSearchInput]=useState("");
   const [open1, setOpen1] = useState(false);
   const [selected1, setSelected1] = useState("All");
@@ -17,7 +18,7 @@ const Course = () => {
   const levels=filter2;
   const navigate=useNavigate();
 
-  const searchData=featured.filter((curCard)=>{
+  const searchData=(featured).filter((curCard)=>{
     const mathSearch =curCard.title.toLowerCase().includes(searchInput.toLowerCase());
     const search1= selected1 === "All" || curCard.title.toLowerCase().includes(selected1.toLocaleLowerCase());
     const search2=selected2 ==="All Levels" || curCard.category.toLowerCase().includes(selected2.toLowerCase());
@@ -122,9 +123,9 @@ const Course = () => {
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5 sm:p-10">
     {searchData.map((value) => (
       <div
-        key={value.id}
+        key={value._id}
         className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
-        onClick={()=>navigate(`/course/${value.id}`)}
+        onClick={()=>navigate(`/course/${value._id}`)}
       >
         <img
           src={value.img}

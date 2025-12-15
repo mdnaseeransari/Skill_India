@@ -1,49 +1,131 @@
-import Navbar from "../component/Navbar"
 import Home from "../component/Home"
 import Course from "../component/Course";
 import Cart from "../component/cart/Cart"
 import Buy from "../component/cart/Buy"
 import Login from "../component/Login";
-import Signin from "../component/Signin";
-import Footer from "../component/Footer";
+import SignUp from "../component/SignUp";
 import Admin from "../component/admin/Admin";
-import Forgot from "../component/Forgot";
-import { useState,useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import Profile from "../component/Profile";
+import Forgot from "../component/forgot";
+import {createBrowserRouter, RouterProvider } from "react-router-dom";
 import CourseDetails from "../component/CourseDetails";
-import Learning from "../component/learning/Learning";
-
+import PageLayout from "../component/PageLayout";
+import { courseLoader } from "../api/GetAPIData";
+import { courseDetailsLoader } from "../api/getSingleData";
+// import Dashboard from "../component/Dashboard";
+import { dashboardLoader } from "../api/GetDashboardData";
+import Learning from "../component/Learning/Learning";
+import UserPageLayout from "../component/user/userPageLayout";
+import UserProfile from "../component/user/UserProfile";
 
 function App() {
-  const [theme, setTheme] = useState("dark-mode")
+  const router=createBrowserRouter([
+    {
+      path:"/",
+      element:<PageLayout/>,
+      children:[
+        {
+          path:"/",
+          element:<Home/>,
+          loader:courseLoader
+        },
+        {
+          path:"/:courseId",
+          element:<CourseDetails/>,
+          loader:courseDetailsLoader
+        },
+        {
+          path:"/course",
+          element:<Course/>,
+          loader:courseLoader
+        },
+        {
+          path:"/course/:courseId",
+          element:<CourseDetails/>,
+          loader:courseDetailsLoader
+        },
+        {
+          path:"/Cart",
+          element:<Cart/>
+        },
+        {
+          path:"/Login",
+          element:<Login/>
+        },
+        {
+          path:"/SignUp",
+          element:<SignUp/>
+        },
+        {
+          path:"/Admin",
+          element:<Admin/>
+        },
+        {
+          path:"/Buy",
+          element:<Buy/>
+        },
+        {
+          path:"/Forgot",
+          element:<Forgot/>
+        }
+      ]
+    },
+    {
+      path:"/dashboard",
+      element:<UserPageLayout/>,
+      children:[
+        {
+          index: true,
+          element:<Home/>,
+          loader:courseLoader
+        },
+        {
+          path:":courseId",
+          element:<CourseDetails/>,
+          loader:courseDetailsLoader
+        },
+        {
+          path:"course",
+          element:<Course/>,
+          loader:courseLoader
+        },
+        {
+          path:"course/:courseId",
+          element:<CourseDetails/>,
+          loader:courseDetailsLoader
+        },
+        {
+          path:"Cart",
+          element:<Cart/>
+        },
+        {
+          path:"Login",
+          element:<Login/>
+        },
+        {
+          path:"Buy",
+          element:<Buy/>
+        },
+        {
+          path:"Forgot",
+          element:<Forgot/>
+        },
+        {
+          path:"Learning",
+          element:<Learning/>
+        },
+        {
+          path:"profile",
+          element:<UserProfile/>,
+          loader:dashboardLoader      
+        }       
+      ]
+    },
 
-   useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
-  
+  ])
 
   return (
     <>
-      <div className="min-h-screen flex flex-col bg-secondary">
-        <Navbar theme={theme} setTheme={setTheme} />
-        <div className="grow flex flex-col">
-        <Routes>
-          <Route path="/profile" element={<Profile />}/>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/course" element={<Course/>}/>
-          <Route path="/course/:courseId" element={<CourseDetails/>}/>
-          <Route path="/Cart" element={<Cart/>}/>
-          <Route path="/Login" element={<Login/>}/>
-          <Route path="/Signin" element={<Signin/>}/>
-          <Route path="/Admin" element={<Admin/>}/>
-          <Route path="/Buy" element={<Buy/>}/>
-          <Route path="/Forgot" element={<Forgot/>}/>
-          <Route path="/Learning" element={<Learning/>}/>
-        </Routes>
-        </div>
-        <Footer/>
-      </div>
+       <RouterProvider router={router}/>
     </>
   )
 }

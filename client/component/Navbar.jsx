@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { IoSunnyOutline, IoMenu, IoClose } from "react-icons/io5";
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from "react-router-dom";
+import { IoSunnyOutline, IoMenu, IoClose, IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa";
 
@@ -20,14 +20,13 @@ const Navbar = ({ theme, setTheme }) => {
     <header className="bg-navbar text-primary sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-5">
 
-        {/* LEFT LOGO */}
+        {/* LEFT SECTION OF NAVBAR */}
+          <NavLink to="/">
         <div className="flex items-center gap-3 text-xl font-bold">
-          <Link to="/"><FaGraduationCap className="text-3xl" /></Link>
-          <span>
-            
-            <Link to="/">Skill India</Link>
-          </span>
+          <FaGraduationCap className="text-3xl" />
+          <span className="cursor-pointer">Skill India</span>
         </div>
+          </NavLink>
 
         {/* RIGHT SECTION (DESKTOP) */}
         <div className="hidden lg:flex items-center gap-8">
@@ -53,7 +52,7 @@ const Navbar = ({ theme, setTheme }) => {
             <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
               Login
             </button></Link>
-          <Link to="/Signin">
+          <Link to="/SignUp">
             <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
               Sign Up
             </button></Link>
