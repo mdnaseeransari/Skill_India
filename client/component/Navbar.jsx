@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import React, { useState} from 'react';
+import { Link, NavLink} from "react-router-dom";
 import { IoSunnyOutline, IoMenu, IoClose, IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa";
 
 const Navbar = ({ theme, setTheme }) => {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
 
   return (
     <header className="bg-navbar text-primary sticky top-0 z-50 shadow-md">
@@ -46,30 +37,19 @@ const Navbar = ({ theme, setTheme }) => {
             <FaCartShopping className="text-2xl cursor-pointer hover:text-blue-600" />
           </Link>
 
-          {!user && (
+          {(
             <>
-              <Link to="/Login">
+              <Link to="/login">
             <button className="bg-accent-primary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-primary">
               Login
             </button></Link>
-          <Link to="/SignUp">
+          <Link to="/Signup">
             <button className="bg-accent-secondary px-4 py-1 rounded text-button cursor-pointer hover-bg-accent-secondary">
               Sign Up
             </button></Link>
             </>
           )}
 
-          {user && (
-            <Link to="/profile">
-              <button className="cursor-pointer">
-                <img
-                  src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
-                  alt="profile"
-                  className="w-7 h-7 rounded-full"
-                />
-              </button>
-            </Link>
-          )}
         </div>
 
         {/* mobile */}
@@ -89,7 +69,7 @@ const Navbar = ({ theme, setTheme }) => {
             <Link to="/course">Courses</Link>
           </span>
 
-          {!user && (
+          {(
             <>
               <Link to="/login">
                 <button className="bg-accent-primary w-full py-2 rounded text-button mt-3">
@@ -103,18 +83,6 @@ const Navbar = ({ theme, setTheme }) => {
                 </button>
               </Link>
             </>
-          )}
-
-          {user && (
-            <Link to="/profile">
-              <button className="bg-accent-secondary w-full py-2 rounded text-button mt-3 flex items-center justify-center">
-                <img
-                  src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
-                  alt="profile"
-                  className="w-7 h-7 rounded-full"
-                />
-              </button>
-            </Link>
           )}
 
         </div>
