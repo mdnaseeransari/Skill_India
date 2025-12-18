@@ -92,7 +92,7 @@ const Navigate=useNavigate();
             {featured.map((value) => (
               <div
                 key={value._id}
-                className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
+                className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color cursor-pointer"
                 onClick={()=>Navigate(`${value._id}`)}
               >
                 <img
@@ -107,7 +107,7 @@ const Navigate=useNavigate();
                   </h1>
 
                   <p className="pt-2 text-secondary text-sm sm:text-base">
-                    Category: {value.category}
+                    Category: {value.level}
                   </p>
 
                   <div className="flex justify-between items-center pt-2 text-secondary text-sm sm:text-base">
@@ -118,7 +118,7 @@ const Navigate=useNavigate();
                   <div className="flex justify-between items-center pt-4 text-secondary">
                     <div className="flex items-center gap-2 text-sm sm:text-base">
                       <FaRegClock />
-                      <p>{value.time}</p>
+                      <p>{value.duration}</p>
                     </div>
 
                     <div className="text-primary font-bold text-xl sm:text-2xl">

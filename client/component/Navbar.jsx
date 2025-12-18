@@ -13,7 +13,7 @@ const Navbar = ({ theme, setTheme }) => {
 
         {/* LEFT SECTION OF NAVBAR */}
           <NavLink to="/">
-        <div className="flex items-center gap-3 text-xl font-bold">
+        <div className="flex items-center gap-3 text-xl font-bold cursor-pointer">
           <FaGraduationCap className="text-3xl" />
           <span className="cursor-pointer">Skill India</span>
         </div>

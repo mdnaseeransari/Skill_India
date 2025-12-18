@@ -21,7 +21,7 @@ const Course = () => {
   const searchData=(featured).filter((curCard)=>{
     const mathSearch =curCard.title.toLowerCase().includes(searchInput.toLowerCase());
     const search1= selected1 === "All" || curCard.title.toLowerCase().includes(selected1.toLocaleLowerCase());
-    const search2=selected2 ==="All Levels" || curCard.category.toLowerCase().includes(selected2.toLowerCase());
+    const search2=selected2 ==="All Levels" || curCard.level.toLowerCase().includes(selected2.toLowerCase());
     return  mathSearch && search2 && search1;
   })
   return (
@@ -124,7 +124,7 @@ const Course = () => {
     {searchData.map((value) => (
       <div
         key={value._id}
-        className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color"
+        className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color cursor-pointer"
         onClick={()=>navigate(`/course/${value._id}`)}
       >
         <img
@@ -139,18 +139,18 @@ const Course = () => {
           </h1>
 
           <p className="pt-2 text-secondary text-sm sm:text-base">
-            Category: {value.category}
+            Level: {value.level}
           </p>
 
           <div className="flex justify-between items-center pt-2 text-secondary text-sm sm:text-base">
-            <p>Students: {value.students}</p>
+            <p>Students enrolled: {value.students}</p>
             <p>Rating: {value.rating} ⭐</p>
           </div>
 
           <div className="flex justify-between items-center pt-4 text-secondary">
             <div className="flex items-center gap-2 text-sm sm:text-base">
               <FaRegClock />
-              <p>{value.time}</p>
+              <p>{value.duration}</p>
             </div>
 
             <div className="text-primary font-bold text-xl sm:text-2xl">
@@ -162,7 +162,6 @@ const Course = () => {
     ))}
   </div>
 </div>
-
 
 </>
 );

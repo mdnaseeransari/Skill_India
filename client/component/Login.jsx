@@ -21,7 +21,11 @@ const Login = () => {
       const res = await axios.post("http://localhost:3000/user/login",userData,);
       const token = res.data.token;
       localStorage.setItem("token", token);
-      navigate("/dashboard");
+      if(res.data.role=="admin") {
+        navigate("/admin")
+      }else{
+        navigate("/dashboard");
+      }
 
     } catch (error) {
       console.log(error || "Login failed");
