@@ -13,7 +13,7 @@ const CourseDetails = () => {
             <h1 className='text-xl text-secondary'>{course.description}</h1>
             <div className="flex items-center text-sm sm:text-base gap-2">
                 <FaRegClock />
-                <p className=''>{course.time} total</p>
+                <p className=''>{course.duration} total</p>
             </div>
         </div>
 

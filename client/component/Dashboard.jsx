@@ -8,9 +8,6 @@ const Navbar = ({ theme, setTheme }) => {
 
   const [open, setOpen] = useState(false);
 
-  // const toggleTheme = () => {
-  //   setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode");
-  // };
   return (
     <header className="bg-navbar text-primary sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-5">

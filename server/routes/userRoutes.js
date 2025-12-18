@@ -14,7 +14,7 @@ userRoutes.post("/signup", async (req, res) => {
     }
     const savedData = await users.create(req.body);
     const plainUser = savedData.toObject();
-    const token = generateToken({id: plainUser._id, username: plainUser.email});
+    const token = generateToken({id: plainUser._id, email: plainUser.email,role:plainUser.role});
     console.log("token is:", token);
     res.json({
         message: "person added",
@@ -32,9 +32,9 @@ userRoutes.post("/login",async(req,res)=>{
         if (!isMatch) {
             return res.status(401).json({ error: "Invalid username or password" });
         }
-        const token = generateToken({id: user._id, username: user.email});
+        const token = generateToken({id: user._id, email: user.email,role:user.role});
 
-        res.json({message: "Login successful",token});
+        res.json({message: "Login successful",token, role: user.role});
         
     } catch (error) {
         console.error(error);

@@ -3,6 +3,7 @@ import connectDb from "./connectDb.js";
 import cors from "cors";
 import courseRoutes from "./routes/courses.js";
 import userRoutes from "./routes/userRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 const app=express();
 connectDb();
 app.use(
@@ -17,6 +18,8 @@ app.use(express.json());
 app.use("/courses",courseRoutes);
 
 app.use("/user",userRoutes);
+
+app.use("/admin",adminRoutes);
 
 app.listen(3000,()=>{
     console.log("server is running");

@@ -17,7 +17,7 @@ const UserNavbar = ({ theme, setTheme }) => {
       <div className="container mx-auto flex items-center justify-between p-5">
 
         {/* LEFT SECTION OF NAVBAR */}
-        <div className="flex items-center gap-3 text-xl font-bold" onClick={()=>navigate("")}>
+        <div className="flex items-center gap-3 text-xl font-bold cursor-pointer" onClick={()=>navigate("")}>
           <FaGraduationCap className="text-3xl" />
           <span className="cursor-pointer">Skill India</span>
         </div>
@@ -48,7 +48,7 @@ const UserNavbar = ({ theme, setTheme }) => {
           <img
             src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180"
             alt="profile"
-            className="w-10 h-10 rounded-full border"
+            className="w-10 h-10 rounded-full border cursor-pointer"
             onClick={()=>navigate("profile")}
           />
 
