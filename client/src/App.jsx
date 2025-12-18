@@ -22,7 +22,6 @@ import EditCourse from "../component/admin/EditCourse";
 import { editCourseLoader } from "../api/UpdateSingleData";
 import ManageUser from "../component/admin/ManageUser";
 import { adminUsersLoader } from "../api/AdminUsersLoader";
-import AdminProfile from "../component/admin/AdminProfile";
 import { adminDetailsLoader } from "../api/GetDataAdmin";
 
 function App() {
@@ -76,6 +75,7 @@ function App() {
     {
       path:"/dashboard",
       element:<UserPageLayout/>,
+      loader:dashboardLoader,
       children:[
         {
           index: true,
@@ -130,11 +130,7 @@ function App() {
       children:[
         {
           index: true,
-          element:<AdminHomePage/>
-        },
-        {
-          path:"profile",
-          element:<AdminProfile/>,
+          element:<AdminHomePage/>,
           loader:adminDetailsLoader
         },
         {

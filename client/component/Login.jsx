@@ -68,7 +68,7 @@ const Login = () => {
         
           {/* Login Button */}
           <button
-            className="bg-accent-secondary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition"
+            className="bg-accent-secondary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition cursor-pointer"
           >
             Login
           </button>

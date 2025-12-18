@@ -1,11 +1,40 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 
 const AdminHomePage = () => {
     const navigate=useNavigate();
+    const user=useLoaderData();
+
+    const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/Login";
+  };
   return (
     <>
-    <div className='grid grid-cols-2 place-items-center min-h-[67vh]'>
+    <div className="bg-primary min-h-screen p-6">
+      <div className="max-w-6xl mx-auto mb-10">
+        {/*  Dashboard Header */}
+        <div className="border-color border bg-primary p-6 rounded-2xl shadow flex flex-col md:flex-row items-center justify-between gap-6 cursor-pointer m-4">
+          <div className="flex items-center gap-5">
+            <img
+              src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180"
+              alt="profile"
+              className="w-24 h-24 rounded-full border"
+            />
+            <div>
+              <h2 className="text-2xl font-bold text-primary">{user.fullName}</h2>
+              <p className="text-secondary text-sm">{user.email}</p>
+            </div>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="bg-purple-600 w-full md:w-auto px-6 py-2 rounded-xl border text-black transition cursor-pointer"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    <div className='flex  justify-evenly items-center'>
         <div className='rounded-xl bg-primary max-w-[350px] w-full  border border-color flex flex-col gap-10 pb-4'>
             <div className='flex justify-center items-center border-b border-color rounded-t-xl p-2'>
             <h1 className='text-primary font-bold text-lg sm:text-xl lg:text-2xl'>Manage Courses</h1>
@@ -32,6 +61,7 @@ const AdminHomePage = () => {
         </div>
 
 
+    </div>
     </div>
     </>
   )
