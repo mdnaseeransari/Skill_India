@@ -23,56 +23,67 @@ import { editCourseLoader } from "../api/UpdateSingleData";
 import ManageUser from "../component/admin/ManageUser";
 import { adminUsersLoader } from "../api/AdminUsersLoader";
 import { adminDetailsLoader } from "../api/GetDataAdmin";
+import PublicRoute from "../component/PublicRoute";
+import UserProtectedRoute from "../component/UserProtectedRoute";
+import AdminProtectedRoute from "../component/admin/AdminProtectedRoute";
 
 function App() {
   const router=createBrowserRouter([
+{
+  element: <PublicRoute />,
+  children: [
     {
-      path:"/",
-      element:<PageLayout/>,
-      children:[
+      path: "/",
+      element: <PageLayout />,
+      children: [
         {
-          path:"/",
-          element:<Home/>,
-          loader:courseLoader
+          index: true,
+          element: <Home />,
+          loader: courseLoader
         },
         {
-          path:"/:courseId",
-          element:<CourseDetails/>,
-          loader:courseDetailsLoader
+          path: "course",
+          element: <Course />,
+          loader: courseLoader
         },
         {
-          path:"/course",
-          element:<Course/>,
-          loader:courseLoader
+          path: "course/:courseId",
+          element: <CourseDetails />,
+          loader: courseDetailsLoader
         },
         {
-          path:"/course/:courseId",
-          element:<CourseDetails/>,
-          loader:courseDetailsLoader
+          path: "/:courseId",
+          element: <CourseDetails />,
+          loader: courseDetailsLoader
         },
         {
-          path:"/Cart",
-          element:<Cart/>
+          path: "cart",
+          element: <Cart />
         },
         {
-          path:"/Login",
-          element:<Login/>
+          path: "login",
+          element: <Login />
         },
         {
-          path:"/SignUp",
-          element:<SignUp/>
+          path: "signup",
+          element: <SignUp />
         },
         {
-          path:"/Buy",
-          element:<Buy/>
+          path: "buy",
+          element: <Buy />
         },
         {
-          path:"/Forgot",
-          element:<Forgot/>
+          path: "forgot",
+          element: <Forgot />
         }
       ]
+    }
+  ]
     },
     {
+      element:<UserProtectedRoute/>,
+      children:[
+      {
       path:"/dashboard",
       element:<UserPageLayout/>,
       loader:dashboardLoader,
@@ -102,16 +113,8 @@ function App() {
           element:<Cart/>
         },
         {
-          path:"Login",
-          element:<Login/>
-        },
-        {
           path:"Buy",
           element:<Buy/>
-        },
-        {
-          path:"Forgot",
-          element:<Forgot/>
         },
         {
           path:"Learning",
@@ -120,45 +123,49 @@ function App() {
         {
           path:"profile",
           element:<UserProfile/>,
-          loader:dashboardLoader      
-        }       
+          loader:dashboardLoader
+        }
+      ]
+    }
       ]
     },
     {
-      path:"/admin",
-      element:<AdminPageLayout/>,
+      element:<AdminProtectedRoute/>,
       children:[
         {
-          index: true,
-          element:<AdminHomePage/>,
-          loader:adminDetailsLoader
-        },
-        {
-          path:"managecourse",
-          element:<ManageCourse/>,
-          loader:courseLoader
-        },
-        {
-          path:"managecourse/addcourse",
-          element:<AddCourse/>,
-        },
-        {
-          path:"managecourse/editcourse/:courseId",
-          element:<EditCourse/>,
-          loader:editCourseLoader
-        },
-        {
-          path:"manageuser",
-          element:<ManageUser/>,
-          loader:adminUsersLoader
+          path:"/admin",
+          element:<AdminPageLayout/>,
+          children:[
+            {
+              index: true,
+              element:<AdminHomePage/>,
+              loader:adminDetailsLoader
+            },
+            {
+              path:"managecourse",
+              element:<ManageCourse/>,
+              loader:courseLoader
+            },
+            {
+              path:"managecourse/addcourse",
+              element:<AddCourse/>,
+            },
+            {
+              path:"managecourse/editcourse/:courseId",
+              element:<EditCourse/>,
+              loader:editCourseLoader
+            },
+            {
+              path:"manageuser",
+              element:<ManageUser/>,
+              loader:adminUsersLoader
+            }
+    
+          ]
         }
-
       ]
     }
-
-
   ])
-
   return (
     <>
        <RouterProvider router={router}/>

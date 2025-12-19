@@ -1,30 +1,46 @@
 import axios from "axios";
 import { redirect} from "react-router-dom";
 
-export async function dashboardLoader() {
-  const token = localStorage.getItem("token");
-
-  //  If no token → go to login
-  if (!token) {
-    return redirect("/Login");
-  }
-
-  try {
-    const res = await axios.get("http://localhost:3000/user/dashboard",
+async function getUserData(token) {
+    const res = await axios.get("http://localhost:3000/user/userdata",
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-
     //  this data will be available in Dashboard component
-    console.log("db user data:",res.data)
-    return res.data;
-
-  } catch (error) {
-    // token expired / invalid
-    localStorage.removeItem("token");
-    return redirect("/Login");
-  }
+    // console.log("db user data:",res.data)
+  return res.data.user;
 }
+
+
+const getEnrolledCourses = async (token) => {
+  const res = await axios.get("http://localhost:3000/user/enrolledcourses",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.data;
+};
+
+
+export const dashboardLoader = async () => {
+  const token = localStorage.getItem("token");
+  // No token → redirect
+  if (!token) {
+    throw redirect("/Login");
+  }
+  try {
+    const user = await getUserData(token);
+    const enrolled = await getEnrolledCourses(token);
+    return {user,enrolled};
+    
+  } catch (error) {
+    localStorage.removeItem("token");
+    throw redirect("/Login");
+  }
+};

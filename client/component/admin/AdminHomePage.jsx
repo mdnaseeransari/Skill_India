@@ -7,7 +7,8 @@ const AdminHomePage = () => {
 
     const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/Login";
+    localStorage.removeItem("role");
+    navigate("/Login",{ replace: true }); 
   };
   return (
     <>

@@ -3,7 +3,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 const Cart = () => {
   return (
-    <div className='bg-primary flex flex-col items-center justify-center grow p-6 sm:p-10 gap-4'>
+    <div className='flex flex-col items-center justify-center grow p-6 sm:p-10 gap-4'>
       
       <FaCartArrowDown className='text-secondary text-6xl sm:text-7xl md:text-8xl' />
       

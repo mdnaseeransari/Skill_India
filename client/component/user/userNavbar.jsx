@@ -14,9 +14,11 @@ const UserNavbar = ({ theme, setTheme }) => {
 
   // Logout function - only triggers from the dropdown button
   const handleLogout = () => {
-    console.log("Logging out...");
+    // console.log("Logging out...");
     setDropdownOpen(false);
-    navigate("/login"); 
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/Login",{ replace: true }); 
   };
 
   // Close dropdown when clicking outside
@@ -89,15 +91,6 @@ const UserNavbar = ({ theme, setTheme }) => {
                     <IoPersonOutline className="text-lg" />
                     <span>My Profile</span>
                   </div>
-                  
-                  <Link 
-                    to="/dashboard/learning" 
-                    className="flex items-center gap-3 px-4 py-3 hover:bg-blue-500/10 transition-colors text-primary"
-                    onClick={() => setDropdownOpen(false)}
-                  >
-                    <IoBookOutline className="text-lg" />
-                    <span>My Learning</span>
-                  </Link>
                 </div>
 
                 {/* Logout Button */}

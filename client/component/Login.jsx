@@ -21,10 +21,11 @@ const Login = () => {
       const res = await axios.post("http://localhost:3000/user/login",userData,);
       const token = res.data.token;
       localStorage.setItem("token", token);
+      localStorage.setItem("role", res.data.role);
       if(res.data.role=="admin") {
-        navigate("/admin")
+        navigate("/admin",{ replace: true })
       }else{
-        navigate("/dashboard");
+        navigate("/dashboard",{ replace: true });
       }
 
     } catch (error) {

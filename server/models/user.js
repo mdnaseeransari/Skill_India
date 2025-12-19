@@ -7,7 +7,8 @@ const userSchema=mongoose.Schema({
     phoneNumber:{type:Number,required:true},
     address:{type:String,required:true},
     password:{type:String,required:true},
-    role:{type:String,enum:["user","admin"],default:"user"}
+    role:{type:String,enum:["user","admin"],default:"user"},
+    enrolledCourses:[{course: {type: mongoose.Schema.Types.ObjectId,ref:"course"},progress: {type: Number,default: 0,min: 0,max: 100}}]
 })
 
 

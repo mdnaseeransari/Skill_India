@@ -125,7 +125,7 @@ const Course = () => {
       <div
         key={value._id}
         className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color cursor-pointer"
-        onClick={()=>navigate(`/course/${value._id}`)}
+        onClick={()=>navigate(`/dashboard/course/${value._id}`)}
       >
         <img
           src={value.img}
