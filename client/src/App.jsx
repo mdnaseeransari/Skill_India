@@ -84,7 +84,7 @@ function App() {
       element:<UserProtectedRoute/>,
       children:[
       {
-      path:"/dashboard",
+      path:"dashboard",
       element:<UserPageLayout/>,
       loader:dashboardLoader,
       children:[
@@ -117,7 +117,7 @@ function App() {
           element:<Buy/>
         },
         {
-          path:"Learning",
+          path:"Learning/:courseId",
           element:<Learning/>
         },
         {
@@ -133,13 +133,13 @@ function App() {
       element:<AdminProtectedRoute/>,
       children:[
         {
-          path:"/admin",
+          path:"admin",
           element:<AdminPageLayout/>,
           children:[
             {
               index: true,
               element:<AdminHomePage/>,
-              loader:adminDetailsLoader
+              loader:adminDetailsLoader,
             },
             {
               path:"managecourse",

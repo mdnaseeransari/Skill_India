@@ -6,7 +6,7 @@ const PublicRoute = () => {
 
   // If logged in
   if (token) {
-    if (role == "admin") {
+    if (role === "admin") {
       return <Navigate to="/admin" replace />;
     }
     return <Navigate to="/dashboard" replace />;

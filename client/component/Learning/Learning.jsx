@@ -1,28 +1,69 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
-import video1 from "./video.mp4"; 
+import video1 from "./video.mp4";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 const lessons = [
   { id: 1, title: "Introduction to the Course", video: video1, duration: "5:30" },
   { id: 2, title: "Getting Started", video: "https://www.w3schools.com/html/mov_bbb.mp4", duration: "8:45" },
   { id: 3, title: "Core Concepts", video: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4", duration: "12:20" },
   { id: 4, title: "Practical Examples", video: "https://samplelib.com/lib/preview/mp4/sample-10s.mp4", duration: "15:00" },
-  { id: 5, title: "Advanced Topics", video: "https://samplelib.com/lib/preview/mp4/sample-15s.mp4", duration: "18:30" },
-  { id: 6, title: "Project Overview", video: "https://samplelib.com/lib/preview/mp4/sample-20s.mp4", duration: "10:15" },
-  { id: 7, title: "Building the Project", video: "https://samplelib.com/lib/preview/mp4/sample-30s.mp4", duration: "25:10" },
-  { id: 8, title: "Testing and Debugging", video: "https://samplelib.com/lib/preview/mp4/sample-1s.mp4", duration: "14:40" },
+  { id: 5, title: "Project Overview", video: "https://samplelib.com/lib/preview/mp4/sample-20s.mp4", duration: "10:15" },
+  { id: 6, title: "Building the Project", video: "https://samplelib.com/lib/preview/mp4/sample-30s.mp4", duration: "25:10" },
 ];
 
 function Learning() {
+  const { courseId } = useParams();
   const [currentLesson, setCurrentLesson] = useState(1);
   const [watchedLessons, setWatchedLessons] = useState([]);
 
-  const handleVideoEnd = () => {
-    setWatchedLessons((prev) =>
-      prev.includes(currentLesson) ? prev : [...prev, currentLesson]
-    );
+  useEffect(() => {
+    const fetchProgress = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get("http://localhost:3000/user/userdata", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const userCourse = res.data.user.enrolledCourses.find(c => c.course === courseId);
+
+        if (userCourse && userCourse.progress > 0) {
+          const count = Math.round((userCourse.progress / 100) * lessons.length);
+          const alreadyWatched = lessons.slice(0, count).map(l => l.id);
+
+          setWatchedLessons(alreadyWatched);
+          setCurrentLesson(alreadyWatched.length + 1 <= lessons.length ? alreadyWatched.length + 1 : lessons.length);
+        }
+      } catch (err) {
+        console.error("Error loading progress:", err);
+      }
+    };
+    fetchProgress();
+  }, [courseId]);
+
+  const handleVideoEnd = async () => {
+    const isNewWatch = !watchedLessons.includes(currentLesson);
+    let updatedList = watchedLessons;
+
+    if (isNewWatch) {
+      updatedList = [...watchedLessons, currentLesson];
+      setWatchedLessons(updatedList);
+      try {
+        const token = localStorage.getItem("token");
+        const percentage = Math.round((updatedList.length / lessons.length) * 100);
+
+        await axios.put("http://localhost:3000/user/progress",
+          { courseId, progress: percentage },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+      } catch (err) {
+        console.error("Failed to save progress", err);
+      }
+    }
 
     if (currentLesson < lessons.length) {
       setCurrentLesson(currentLesson + 1);
@@ -36,8 +77,8 @@ function Learning() {
     <div className="dark-mode bg-primary min-h-screen flex flex-col gap-5 p-5 md:p-16">
 
       <div className="text-secondary flex items-center w-fit text-lg cursor-pointer mb-3">
-        <Link to="/"><IoIosArrowBack className="mr-1" /></Link>
-        <Link to="/">Back to Profile</Link>
+        <Link to="/dashboard/profile"><IoIosArrowBack className="mr-1" /></Link>
+        <Link to="/dashboard/profile">Back to Profile</Link>
       </div>
 
       <div className="flex flex-col md:flex-row gap-5 md:gap-10">
@@ -63,9 +104,8 @@ function Learning() {
               <div
                 key={lesson.id}
                 onClick={() => setCurrentLesson(lesson.id)}
-                className={`flex justify-between items-center p-3 rounded-xl border border-color mb-3 cursor-pointer ${
-                  isActive ? "bg-section text-primary" : "bg-secondary text-secondary"
-                } hover:bg-section transition`}
+                className={`flex justify-between items-center p-3 rounded-xl border border-color mb-3 cursor-pointer ${isActive ? "bg-section text-primary" : "bg-secondary text-secondary"
+                  } hover:bg-section transition`}
               >
                 <div>
                   <p className={`font-semibold ${isActive && "text-primary"}`}>
@@ -90,7 +130,7 @@ function Learning() {
           Course
         </h1>
         <p className="text-secondary">
-          Lorem ipsum dolor sit amet 
+          Lorem ipsum dolor sit amet
         </p>
 
         <div className="mt-5">
@@ -105,11 +145,10 @@ function Learning() {
 
         <div className="flex gap-5 mt-5 flex-wrap">
           <button
-            className={`px-4 py-2 rounded-lg ${
-              allCompleted
-                ? "bg-accent-primary text-button"
-                : "bg-gray-400 text-gray-200 cursor-not-allowed"
-            }`}
+            className={`px-4 py-2 rounded-lg ${allCompleted
+              ? "bg-accent-primary text-button"
+              : "bg-gray-400 text-gray-200 cursor-not-allowed"
+              }`}
             disabled={!allCompleted}
           >
             Completed

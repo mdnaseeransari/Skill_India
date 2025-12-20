@@ -21,8 +21,12 @@ async function handleEnrollCourse(courseId) {
     alert("Course Enrolled Successfully");
     navigate("/dashboard/profile");
   } catch (err) {
+    if(err.response?.status===409){
+      alert("You are already enrolled in this course");
+      navigate("/dashboard/profile");
+    }
     // If token expired or invalid
-    if (err.response?.status === 401) {
+    else if (err.response?.status === 401) {
       alert("Session expired. Please login again.");
       localStorage.removeItem("token");
       navigate("/Login");

@@ -24,6 +24,16 @@ const Course = () => {
     const search2=selected2 ==="All Levels" || curCard.level.toLowerCase().includes(selected2.toLowerCase());
     return  mathSearch && search2 && search1;
   })
+
+  function handleNavigate(id){
+    const token=localStorage.getItem("token");
+    if(token){
+      navigate(`/dashboard/course/${id}`)
+    }
+    else{
+      navigate(`/course/${id}`)
+    }
+  }
   return (
     <>
 <div className="text-primary bg-primary">
@@ -125,7 +135,7 @@ const Course = () => {
       <div
         key={value._id}
         className="rounded-xl bg-primary max-w-[350px] w-full mx-auto border border-color cursor-pointer"
-        onClick={()=>navigate(`/dashboard/course/${value._id}`)}
+        onClick={()=>handleNavigate(value._id)}
       >
         <img
           src={value.img}

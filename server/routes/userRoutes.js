@@ -18,7 +18,8 @@ userRoutes.post("/signup", async (req, res) => {
     console.log("token is:", token);
     res.json({
         message: "person added",
-        token: token
+        token: token,
+        role:plainUser.role
     });
 });
 
@@ -84,14 +85,14 @@ userRoutes.post("/enroll",jwtAuthMiddleware, async (req, res) => {
         const user = await users.findById(req.user.id);
         const alreadyEnrolled = user.enrolledCourses.some((c) => c.course.toString() === courseId);
         if (alreadyEnrolled) {
-          return res.status(200).json({ message: "Already enrolled" });
+          return res.status(409).json({ message: "Already enrolled" });
         }
         user.enrolledCourses.push({
           course: courseId,
           progress: 0,
         });
         await user.save();
-        res.status(200).json({ message: "Enrolled successfully" });
+        res.status(201).json({ message: "Enrolled successfully" });
     } catch (error) {
         console.log("error in enrolling the course",error);
         res.status(500).json({message: "Server error while enrolling course"});

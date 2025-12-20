@@ -44,6 +44,8 @@ async function handleFormSubmit(e){
       const res = await axios.post("http://localhost:3000/user/signup",userData);
       const token = res.data.token;
       localStorage.setItem("token", token);
+      console.log(res.data)
+      localStorage.setItem("role", res.data.role);
       navigate("/dashboard");
     } catch (error) {
       console.error(error.response?.data?.error || "Signup failed");
