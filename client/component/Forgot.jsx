@@ -36,7 +36,8 @@ function Forgot() {
   };
 
   return (
-    <div className="bg-primary flex justify-center grow p-10 text-primary">
+    <><br /><br />
+    <div className=" flex justify-center grow p-10 text-primary">
       <div className="w-full max-w-md bg-secondary p-8 rounded-2xl shadow-lg">
 
         <h1 className="text-3xl font-bold text-center mb-6">
@@ -68,6 +69,7 @@ function Forgot() {
 
       </div>
     </div>
+    </>
   );
 }
 

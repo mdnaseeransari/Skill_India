@@ -59,7 +59,6 @@ const SignUp = () => {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(userData);
     try {
       if (isEditMode) {
         // --- UPDATE LOGIC ---
@@ -74,7 +73,6 @@ const SignUp = () => {
         const res = await axios.post("http://localhost:3000/user/signup", userData);
         const token = res.data.token;
         localStorage.setItem("token", token);
-        console.log(res.data)
         localStorage.setItem("role", res.data.role);
         navigate("/dashboard");
       }
@@ -102,7 +100,7 @@ const SignUp = () => {
               name="fullName"
               onChange={handleInput}
               type="text"
-              placeholder="Full Name"
+              placeholder="Full Name" required
               className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
             />
 
@@ -113,7 +111,7 @@ const SignUp = () => {
               onChange={handleInput}
               type="email"
               placeholder="Email"
-              disabled={isEditMode}
+              disabled={isEditMode}  required
               className={`w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted ${isEditMode ? 'opacity-50 cursor-not-allowed' : ''}`}
             />
 
@@ -123,7 +121,7 @@ const SignUp = () => {
               <select
                 className="p-3 border border-color bg-secondary text-primary rounded-lg"
                 value={userData.selectedCode}
-                name="selectedCode"
+                name="selectedCode" required
                 onChange={handleInput}>
                 <option>Select Country</option>
                 {countryCodes.map((c, index) => (
@@ -134,11 +132,11 @@ const SignUp = () => {
               </select>
 
               <input
-                type="tel"
+                type="number"
                 name="phoneNumber"
-                placeholder="Phone Number"
+                placeholder="Phone Number" required
                 className="w-full p-3 bg-secondary border border-color rounded-lg text-primary placeholder:text-muted"
-                value={userData.phoneNumber}
+                value={userData.phoneNumber} pattern="[1-9]{4}-[0-9]{3}-[0-9]{3}" maxLength={10} minLength={10}
                 onChange={handleInput} />
             </div>
 
@@ -148,7 +146,7 @@ const SignUp = () => {
               name="address"
               onChange={handleInput}
               placeholder="Address"
-              rows="3"
+              rows="3" required
               className="w-full p-3 bg-secondary border border-color rounded-lg mb-3 text-primary placeholder:text-muted"
             ></textarea>
 
@@ -158,7 +156,7 @@ const SignUp = () => {
                 name="password"
                 value={userData.password}
                 onChange={handleInput}
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? "text" : "password"} required
                 placeholder={isEditMode ? "New Password (leave blank to keep current)" : "Password"}
                 className="w-full p-3 bg-secondary border border-color rounded-lg  text-primary placeholder:text-muted"
               />
