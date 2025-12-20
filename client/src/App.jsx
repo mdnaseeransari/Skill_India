@@ -4,7 +4,7 @@ import Cart from "../component/cart/Cart"
 import Buy from "../component/cart/Buy"
 import Login from "../component/Login";
 import SignUp from "../component/SignUp";
-import Forgot from "../component/forgot";
+import Forgot from "../component/Forgot";
 import {createBrowserRouter, RouterProvider } from "react-router-dom";
 import CourseDetails from "../component/CourseDetails";
 import PageLayout from "../component/PageLayout";
@@ -26,6 +26,7 @@ import { adminDetailsLoader } from "../api/GetDataAdmin";
 import PublicRoute from "../component/PublicRoute";
 import UserProtectedRoute from "../component/UserProtectedRoute";
 import AdminProtectedRoute from "../component/admin/AdminProtectedRoute";
+import VerifyOtp from "../component/VerifyOtp";
 
 function App() {
   const router=createBrowserRouter([
@@ -75,6 +76,10 @@ function App() {
         {
           path: "forgot",
           element: <Forgot />
+        },
+        {
+          path: "verifyotp",
+          element: <VerifyOtp/>
         }
       ]
     }

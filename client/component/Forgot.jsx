@@ -24,7 +24,7 @@ function Forgot() {
 
 
       alert("OTP has been sent to your email");
-      navigate("/verify-otp", { state: { email } });
+      navigate("/verifyotp");
 
     } catch (err) {
       const msg =
