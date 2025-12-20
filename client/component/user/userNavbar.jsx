@@ -91,6 +91,15 @@ const UserNavbar = ({ theme, setTheme }) => {
                     <IoPersonOutline className="text-lg" />
                     <span>My Profile</span>
                   </div>
+
+                  {/* UPDATED: Removed leading "/" to keep it inside the dashboard route */}
+                  <div 
+                    onClick={() => { navigate("signup?edit=true"); setDropdownOpen(false); }}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-blue-500/10 cursor-pointer transition-colors text-primary"
+                  >
+                    <IoBookOutline className="text-lg" />
+                    <span>Update Profile</span>
+                  </div>
                 </div>
 
                 {/* Logout Button */}
@@ -134,17 +143,43 @@ const UserNavbar = ({ theme, setTheme }) => {
             />
           </div>
 
-          <div className="flex items-center gap-5 py-2 text-xl">
+          <div className="flex items-center gap-5 py-2 text-xl border-b border-color pb-4">
             <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
               setTheme(theme === "dark-mode" ? "light-mode" : "dark-mode")
             } />
             <Link to="/Cart"><FaCartShopping /></Link>
             <img 
-               src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180" 
-               className="w-8 h-8 rounded-full cursor-pointer" 
-               onClick={() => { navigate("profile"); setOpen(false); }} 
-               alt="p"
+                src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180" 
+                className="w-8 h-8 rounded-full cursor-pointer" 
+                onClick={() => { navigate("profile"); setOpen(false); }} 
+                alt="p"
             />
+          </div>
+
+          {/* Mobile Profile Navigation Dropdown */}
+          <div className="mt-4 flex flex-col gap-2">
+              <p className="text-xs font-bold text-muted uppercase px-2">Account Settings</p>
+              <div 
+                onClick={() => { navigate("profile"); setOpen(false); }}
+                className="flex items-center gap-3 p-3 hover:bg-secondary rounded-lg text-primary"
+              >
+                <IoPersonOutline />
+                <span>My Profile</span>
+              </div>
+              <div 
+                onClick={() => { navigate("signup?edit=true"); setOpen(false); }}
+                className="flex items-center gap-3 p-3 hover:bg-secondary rounded-lg text-primary"
+              >
+                <IoBookOutline />
+                <span>Update Profile</span>
+              </div>
+              <button 
+                onClick={handleLogout}
+                className="flex items-center gap-3 p-3 text-red-500 hover:bg-red-500/10 rounded-lg text-left"
+              >
+                <IoLogOutOutline />
+                <span>Log Out</span>
+              </button>
           </div>
         </div>
       )}

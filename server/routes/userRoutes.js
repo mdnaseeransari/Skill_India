@@ -134,5 +134,44 @@ userRoutes.put("/progress", jwtAuthMiddleware, async (req, res) => {
 });
 
 
+// --- NEW UPDATE PROFILE ROUTE ---
+
+userRoutes.put("/update-profile", jwtAuthMiddleware, async (req, res) => {
+    try {
+        const userId = req.user.id; 
+        const { fullName, phoneNumber, address, selectedCode, password } = req.body;
+
+        const user = await users.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // Update basic fields
+        user.fullName = fullName || user.fullName;
+        user.phoneNumber = phoneNumber || user.phoneNumber;
+        user.address = address || user.address;
+        user.selectedCode = selectedCode || user.selectedCode;
+
+        // Update password only if provided
+        if (password && password.trim() !== "") {
+            user.password = password; 
+        }
+
+        await user.save();
+
+        res.status(200).json({ 
+            message: "Profile updated successfully", 
+            user: {
+                fullName: user.fullName,
+                email: user.email,
+                role: user.role
+            } 
+        });
+    } catch (error) {
+        console.error("Update Error:", error);
+        res.status(500).json({ error: "Internal server error while updating profile" });
+    }
+});
+
 
 export default userRoutes; 
