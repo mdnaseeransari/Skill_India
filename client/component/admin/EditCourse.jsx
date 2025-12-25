@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const EditCourse = () => {
     const loadedCourse = useLoaderData();
@@ -26,7 +29,7 @@ const EditCourse = () => {
             await axios.put(`http://localhost:3000/admin/courses/${loadedCourse._id}`,
         {...courseInput, rating: Number(courseInput.rating),students: Number(courseInput.students)},
         {headers: {Authorization: `Bearer ${token}`}});
-        alert("Course updated successfully");
+        toast.success("Course updated successfully ✨");
         setCourseInput({
         img: "",
         title: "",
@@ -46,13 +49,19 @@ const EditCourse = () => {
     }    
   return (
     <>
-<div className="bg-primary flex flex-col items-center pt-10 gap-2 px-4">
+        <div className="p-5">
+        <div  onClick={()=>navigate(-1)} className="bg-accent-primary px-2 rounded text-primary hover:bg-accent-primary flex gap-1 items-center w-max cursor-pointer">
+        <FaArrowLeft />
+        <button className='cursor-pointer'>Go Back</button>
+        </div>
+        </div>
+        <div className=" flex flex-col items-center gap-2 px-4">
             <h1 className="text-primary text-4xl md:text-3xl sm:text-2xl font-bold">
                 Edit or Update the existing Course
             </h1>
 
             {/* FORM START */}
-            <form className="border border-color rounded p-6 w-full max-w-[600px] my-6" onSubmit={handleFormSubmit}>
+            <form className="bg-secondary border border-color rounded p-6 w-full max-w-[600px] my-6" onSubmit={handleFormSubmit}>
 
                 <h1 className="text-primary text-2xl md:text-xl sm:text-lg font-bold">
                     Course Details
@@ -185,7 +194,7 @@ const EditCourse = () => {
                 />
 
                 {/* BUTTON */}
-                <button type="submit" className="bg-accent-primary mt-5 w-full p-3 rounded text-primary hover:bg-accent-primary"
+                <button type="submit" className=" cursor-pointer bg-accent-primary mt-5 w-full p-3 rounded text-primary hover:bg-accent-primary"
                 >Update Course</button>
 
             </form>

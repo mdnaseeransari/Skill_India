@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate, useLoaderData } from "react-router-dom";
+import { Link, useNavigate, useLoaderData, NavLink } from "react-router-dom";
 import { IoSunnyOutline, IoMenu, IoClose, IoSearch, IoPersonOutline, IoBookOutline, IoLogOutOutline } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa";
@@ -36,7 +36,7 @@ const UserNavbar = ({ theme, setTheme }) => {
     <header className="bg-navbar text-primary sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-5">
 
-        <div className="flex items-center gap-3 text-xl font-bold" onClick={() => navigate("")}>
+        <div className="flex items-center gap-3 text-xl font-bold cursor-pointer" onClick={() => navigate("")}>
           <FaGraduationCap className="text-3xl" />
           <span className="cursor-pointer">Skill India</span>
         </div>
@@ -45,7 +45,7 @@ const UserNavbar = ({ theme, setTheme }) => {
         <div className="hidden lg:flex items-center gap-8">
 
           <span className="text-lg text-secondary font-medium cursor-pointer">
-            <Link to="course">Courses</Link>
+            <NavLink to="course" className={({ isActive }) =>`${isActive ?"underline":""}`}>Courses</NavLink>
           </span>
 
           <IoSunnyOutline className="text-2xl cursor-pointer" onClick={() =>
@@ -58,20 +58,19 @@ const UserNavbar = ({ theme, setTheme }) => {
 
           {/* PROFILE DROPDOWN WRAPPER */}
           <div className="relative" ref={dropdownRef}>
-            <img
-              src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180"
-              alt="profile"
-              className="w-10 h-10 rounded-full border cursor-pointer hover:opacity-80 transition-all"
-              onClick={() => setDropdownOpen(!dropdownOpen)} 
-            />
+            <div onClick={() => setDropdownOpen(!dropdownOpen)} className=" cursor-pointer h-10 w-10 bg-accent-primary rounded-full flex items-center justify-center text-button text-2xl font-bold ">
+              {user.fullName.charAt(0).toUpperCase()}
+            </div>
 
             {/* DROPDOWN MENU */}
             {dropdownOpen && (
               <div className="absolute right-0 mt-3 w-64 bg-secondary border border-color rounded-lg shadow-xl animate-slideDown overflow-hidden z-50">
                 {/* User Info Header */}
                 <div className="p-4 flex items-center gap-3 border-b border-color">
-                  <img src="https://th.bing.com/th/id/OIP.4OvvUCPSUCMZ5vDhyCeEbQHaHw?w=163&h=180" className="w-10 h-10 rounded-full border border-color" alt="user" />
-                  <div className="flex flex-col">
+                <div className="h-10 w-10 bg-accent-primary rounded-full flex items-center justify-center text-button text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                {user.fullName.charAt(0).toUpperCase()}
+                </div>
+                <div className="flex flex-col">
                     {/* Dynamic Name and Email */}
                     <span className="font-bold text-primary text-sm">
                         {user?.fullName || "Guest"}

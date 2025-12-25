@@ -23,7 +23,7 @@ const ManageCourse = () => {
     }
   return (
     <>
-    <div className='bg-secondary'>
+    <div className='bg-primary'>
     <div className='flex justify-end items-center'>
         <button className='mr-4 mt-4 px-4 py-3 rounded-xl text-button cursor-pointer bg-green-700' onClick={()=>navigate("addcourse")}>+ Add Course</button>
     </div>

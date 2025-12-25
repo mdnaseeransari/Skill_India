@@ -10,7 +10,7 @@ const AdminPageLayout = () => {
   return (
     <>
       <AdminNavbar theme={theme} setTheme={setTheme} />
-      <div className='min-h-[67vh] bg-secondary'>
+      <div className='min-h-[67vh] bg-primary'>
       <Outlet/>
       </div>
       <Footer/>

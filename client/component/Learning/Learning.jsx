@@ -1,11 +1,13 @@
 import { IoIosArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaRegCheckCircle, FaRegCircle } from "react-icons/fa";
 import video1 from "./video.mp4";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { FaArrowLeftLong } from "react-icons/fa6";
+
 
 const lessons = [
   { id: 1, title: "Introduction to the Course", video: video1, duration: "5:30" },
@@ -20,6 +22,7 @@ function Learning() {
   const { courseId } = useParams();
   const [currentLesson, setCurrentLesson] = useState(1);
   const [watchedLessons, setWatchedLessons] = useState([]);
+  const navigate=useNavigate();
 
   useEffect(() => {
     const fetchProgress = async () => {
@@ -76,10 +79,10 @@ function Learning() {
   return (
     <div className="dark-mode bg-primary min-h-screen flex flex-col gap-5 p-5 md:p-16">
 
-      <div className="text-secondary flex items-center w-fit text-lg cursor-pointer mb-3">
-        <Link to="/dashboard/profile"><IoIosArrowBack className="mr-1" /></Link>
-        <Link to="/dashboard/profile">Back to Profile</Link>
-      </div>
+        <div  onClick={()=>navigate(-1)} className=" ml-6 bg-accent-primary px-2 rounded text-primary hover:bg-accent-primary flex gap-1 items-center w-max cursor-pointer">
+        <FaArrowLeft/>
+        <button className='cursor-pointer'>Go Back</button>
+        </div>
 
       <div className="flex flex-col md:flex-row gap-5 md:gap-10">
         <video

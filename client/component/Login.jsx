@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react'
 import { Link,useNavigate} from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const navigate=useNavigate();
@@ -23,8 +24,10 @@ const Login = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("role", res.data.role);
       if(res.data.role=="admin") {
+        toast.success("Welcome 🎉");
         navigate("/admin",{ replace: true })
       }else{
+        toast.success("Login successful 🎉✅");
         navigate("/dashboard",{ replace: true });
       }
 
@@ -69,7 +72,7 @@ const Login = () => {
         
           {/* Login Button */}
           <button
-            className="bg-accent-secondary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition cursor-pointer"
+            className="bg-accent-primary text-button w-full p-3 rounded-lg font-semibold hover-bg-accent-secondary transition cursor-pointer"
           >
             Login
           </button>

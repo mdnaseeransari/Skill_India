@@ -15,7 +15,7 @@ const AdminNavbar = ({ theme, setTheme }) => {
         </div>
         </NavLink>
         <div className='flex  flex-col justify-center items-center'>
-        <h1 className='text-4xl text-primary'>Admin Dashboard</h1>
+        <h1 className='text-4xl text-primary font-semibold'>Admin Dashboard</h1>
         <p className='text-secondary'>Manage courses and users.</p>
         </div>
         <div className='flex justify-center items-center gap-10'>

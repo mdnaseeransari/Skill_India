@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react' // Added useEffect
 import { Link, useNavigate, useSearchParams, useLoaderData } from "react-router-dom"; // Added useSearchParams and useLoaderData
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ const SignUp = () => {
         await axios.put("http://localhost:3000/user/update-profile", userData, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        alert("Profile updated successfully!");
+        toast.success("Profile updated successfully ✨");
         navigate("/dashboard");
       } else {
         // --- SIGNUP LOGIC (Original) ---
@@ -74,10 +75,11 @@ const SignUp = () => {
         const token = res.data.token;
         localStorage.setItem("token", token);
         localStorage.setItem("role", res.data.role);
+        toast.success("Login successful 🎉✅");
         navigate("/dashboard");
       }
     } catch (error) {
-      console.error(error.response?.data?.error || "Action failed");
+      // console.error(error.response?.data?.error || "Action failed");
       alert(error.response?.data?.error || "Action failed");
     }
   }

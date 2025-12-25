@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import { FaArrowLeft } from "react-icons/fa";
 const AddCourse = () => {
+    const navigate=useNavigate();
     let[courseInput,setCourseInput]=useState({
     img:"",
     title:"",
@@ -23,7 +27,7 @@ const AddCourse = () => {
             const res = await axios.post("http://localhost:3000/admin/addCourse",
         {...courseInput, rating: Number(courseInput.rating),students: Number(courseInput.students)},
         {headers: {Authorization: `Bearer ${token}`}});
-        alert("Course added successfully");
+        toast.success("Course added successfully");
         setCourseInput({
         img: "",
         title: "",
@@ -42,7 +46,14 @@ const AddCourse = () => {
         }
     }
     return (
-        <div className="bg-primary flex flex-col items-center pt-10 gap-2 px-4">
+        <>
+        <div className="p-5">
+        <div  onClick={()=>navigate(-1)} className="bg-accent-primary px-2 rounded text-primary hover:bg-accent-primary flex gap-1 items-center w-max cursor-pointer">
+        <FaArrowLeft />
+        <button className="cursor-pointer">Go Back</button>
+        </div>
+        </div>
+        <div className="bg-primary flex flex-col items-center gap-2 px-4">
             <h1 className="text-primary text-4xl md:text-3xl sm:text-2xl font-bold">
                 Add New Course
             </h1>
@@ -52,7 +63,7 @@ const AddCourse = () => {
             </h2>
 
             {/* FORM START */}
-            <form className="border border-color rounded p-6 w-full max-w-[600px] my-6" onSubmit={handleFormSubmit}>
+            <form className="bg-secondary border border-color rounded p-6 w-full max-w-[600px] my-6" onSubmit={handleFormSubmit}>
 
                 <h1 className="text-primary text-2xl md:text-xl sm:text-lg font-bold">
                     Course Details
@@ -190,6 +201,7 @@ const AddCourse = () => {
 
             </form>
         </div>
+        </>
     );
 };
 

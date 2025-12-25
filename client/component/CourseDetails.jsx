@@ -3,6 +3,7 @@ import { FaRegClock } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const CourseDetails = () => {
     const course = useLoaderData();
@@ -12,22 +13,22 @@ async function handleEnrollCourse(courseId) {
   const token = localStorage.getItem("token");
   // Check login first
     if (!token) {
-    alert("Please login to enroll in a course");
+    toast.error("Please login first to enroll in a course 🔒");
     navigate("/Login");
     return;
   }
   try {
     await axios.post(`http://localhost:3000/user/enroll`,{ courseId },{headers: {Authorization: `Bearer ${token}`}});
-    alert("Course Enrolled Successfully");
+    toast.success("Course Enrolled successfully 🎓");
     navigate("/dashboard/profile");
   } catch (err) {
     if(err.response?.status===409){
-      alert("You are already enrolled in this course");
+      toast.info("You are already enrolled in this course ℹ️");
       navigate("/dashboard/profile");
     }
     // If token expired or invalid
     else if (err.response?.status === 401) {
-      alert("Session expired. Please login again.");
+      toast.error("Session expired. Please login again 🔒");
       localStorage.removeItem("token");
       navigate("/Login");
     } else {

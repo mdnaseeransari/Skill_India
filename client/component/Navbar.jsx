@@ -23,7 +23,7 @@ const Navbar = ({ theme, setTheme }) => {
         <div className="hidden lg:flex items-center gap-8">
 
           <span className="text-lg text-secondary font-medium cursor-pointer">
-            <Link to="/course">Courses</Link>
+            <NavLink to="/course" className={({ isActive }) =>`${isActive ?"underline":""}`}>Courses</NavLink>
           </span>
 
           <IoSunnyOutline

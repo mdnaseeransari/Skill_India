@@ -18,9 +18,9 @@
 
 /* Accent Colors */
 
-.dark-mode .bg-accent-primary { background-color: #4077d1; }   /* Main buttons, highlights (Cyan) */
+.dark-mode .bg-accent-primary { background-color: #4D4DFF; }   /* Main buttons, highlights (Cyan) */
 
-.dark-mode .bg-accent-secondary { background-color: #9c27b0; } /* Secondary buttons, badges (Vivid Violet) */
+.dark-mode .bg-accent-secondary { background-color: #8c2eeb; } /* Secondary buttons, badges (Vivid Violet) */
 
 .dark-mode .bg-section{background-color: #21498a;}
 

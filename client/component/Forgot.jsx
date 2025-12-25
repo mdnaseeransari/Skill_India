@@ -4,7 +4,6 @@ import axios from "axios";
 
 function Forgot() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
 
@@ -13,19 +12,11 @@ function Forgot() {
       alert("Enter your registered email first");
       return;
     }
-
     setSending(true);
-
     try {
-      await axios.post(
-  "http://localhost:3000/api/auth/forgot-password",
-  { email }
-);
-
-
+      await axios.post("http://localhost:3000/api/auth/forgot-password",{ email });
       alert("OTP has been sent to your email");
-      navigate("/verifyotp");
-
+      navigate("verifyotp");
     } catch (err) {
       const msg =
         err?.response?.data?.msg || "Unable to send recovery code";

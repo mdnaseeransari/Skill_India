@@ -74,7 +74,7 @@ const Course = () => {
               setSelected1(item);
               setOpen1(false);
             }}
-            className={`cursor-pointer px-4 py-3 text-sm hover:bg-orange-500 rounded-lg ${
+            className={`cursor-pointer px-4 py-3 text-sm hover:bg-orange-500  ${
               selected1 === item
                 ? "bg-orange-500 text-primary"
                 : "text-primary "
@@ -111,7 +111,7 @@ const Course = () => {
               setSelected2(item);
               setOpen2(false);
             }}
-            className={`cursor-pointer px-4 py-3 text-sm hover:bg-orange-500 rounded-lg ${
+            className={`cursor-pointer px-4 py-3 text-sm hover:bg-orange-500 ${
               selected2 === item
                 ? "bg-orange-500 text-primary"
                 : "text-primary "

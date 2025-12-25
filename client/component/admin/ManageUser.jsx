@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { useLoaderData } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const ManageUser = () => {
     let initialUsersList=useLoaderData();
@@ -11,7 +12,7 @@ async function handleDelete(userId) {
   if (!window.confirm("Are you sure you want to delete this user?")) return;
   try {
     await axios.delete(`http://localhost:3000/admin/users/${userId}`,{headers: {Authorization: `Bearer ${token}`}});
-    alert("User deleted successfully");
+    toast.success("User deleted successfully ✅");
     // Update UI
     setUserList(prev => prev.filter(user => user._id != userId));
   } catch (error) {
@@ -35,7 +36,7 @@ async function handleDelete(userId) {
           <div className="absolute inset-0 rounded-2xl bg-accent-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
           <div className="flex items-center gap-6 relative z-10">
-            <div className="h-14 w-14 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <div className="h-14 w-14 bg-linear-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
               {curr.fullName.charAt(0).toUpperCase()}
             </div>
 
